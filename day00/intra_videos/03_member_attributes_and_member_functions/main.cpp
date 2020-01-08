@@ -5,31 +5,38 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 18:16:48 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/07 19:13:34 by mbutt            ###   ########.fr       */
+/*   Created: 2020/01/07 19:11:10 by mbutt             #+#    #+#             */
+/*   Updated: 2020/01/07 19:32:14 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "Sample.class.hpp"
 
 /*
-Creating an instance of class Sample
-___________________________________________________
-Sample instance                                    |
-Think of the above syntax as declaring a variable: |
-int name_of_variable                               |
-            or                                     |
-char name_of_variable                              |
-Class is static. Instance is dynamic               |
-___________________________________________________|
+instance is a stack variable, not a pointer, so we use:
+instance.foo and instance.bar();
+
+if instance was a  pointer variable then we would use the below:
+instance->foo and instance->bar();
+
+Syntax is similar to structs in C
 */
 
 /*
-Use below to compile:
+To compile:
+
 clang++ main.cpp Sample.class.cpp
 */
 
 int main(void)
 {
 	Sample instance;
+	instance.foo = 42;
+
+	std::cout << "instance.foo: " << instance.foo << std::endl;
+
+	instance.bar();
+
+	return(0);
 }

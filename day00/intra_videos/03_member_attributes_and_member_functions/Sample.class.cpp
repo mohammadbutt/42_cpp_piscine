@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 18:06:49 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/07 18:43:54 by mbutt            ###   ########.fr       */
+/*   Created: 2020/01/07 19:07:21 by mbutt             #+#    #+#             */
+/*   Updated: 2020/01/07 19:32:17 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,17 @@
 Sample::Sample(void)
 {
 	std::cout << "Constructor called" << std::endl;
-	return; // return is not required. Think of it as a void function in C
+	return;
 }
 
 Sample::~Sample(void)
 {
 	std::cout << "Destructor called" << std::endl;
-	return; // return is not required. Think of it as a void function in C
+	return;
+}
+
+void Sample::bar(void)
+{
+	std::cout << "Member function bar called" << std::endl;
+	return;
 }
