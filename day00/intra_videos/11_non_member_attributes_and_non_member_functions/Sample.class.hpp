@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/08 15:39:37 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/08 19:17:09 by mbutt            ###   ########.fr       */
+/*   Created: 2020/01/08 19:35:37 by mbutt             #+#    #+#             */
+/*   Updated: 2020/01/08 21:25:15 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 # define SAMPLE_CLASS_HPP
 
 /*
-Structural comparision on two instances and then check if they are equal or not
-
+Non-member attributes and functions
+We want a counter to know how many instances of a class have been made.
 */
+
 class Sample
 {
 	public:
-		Sample(int v);
+		Sample(void);
 		~Sample(void);
 
-		int getFoo(void) const;
-		int compare(Sample *other) const;
+		static int getNbInst(void);
 	
 	private:
-		int _foo;
+		static int _nbInst;
 };
 
 #endif

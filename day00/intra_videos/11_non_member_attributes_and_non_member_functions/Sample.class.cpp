@@ -5,49 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/08 16:16:19 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/08 19:27:24 by mbutt            ###   ########.fr       */
+/*   Created: 2020/01/08 21:05:03 by mbutt             #+#    #+#             */
+/*   Updated: 2020/01/08 21:25:00 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Sample.class.hpp"
 
-Sample::Sample(int v): _foo(v)
+/*
+When we are referring to a member attribute or function we will use "this->",
+but when we are referring to a non-member attribute or function, we will use
+"Classname::" in this case, "Sample::"
+*/
+
+Sample::Sample(void)
 {
 	std::cout << "Constructor called" << std::endl;
+	Sample::_nbInst += 1;
 }
 
 Sample::~Sample(void)
 {
 	std::cout << "Destructor called" << std::endl;
+	Sample::_nbInst -= 1;
 }
 
-int Sample::getFoo(void) const
+int Sample::getNbInst(void)
 {
-	return(this->_foo);
+	return(Sample::_nbInst);
 }
 
-int Sample::compare(Sample *other) const
-{
+int Sample::_nbInst = 0;
 
-	if(this->_foo < other->getFoo())
-		return(-1);
-	else if(this->_foo > other->getFoo())
-		return(1);
-
-//	std::cout << "Printing memory address1: " << &(this->_foo) << std::endl;
-//	std::cout << "Printing memory address2: " << &other->getFoo() << std:: endl;
-//	std::cout << "Printing memory address3: " << &(other->_foo) << std::endl;
-//	if(&other->getFoo() == &other._foo)
-//		std::cout << "Same address" << std::endl;
-//	else
-//		std::cout << "Different address" << std::endl;
 /*
-	if(this->_foo < other->_foo)
-		return(-1);
-	else if(this->_foo > other->_foo)
-		return(1);
-*/	
-	return(0);
-}
+int Sample::_nbInst = 0;
+Above is the only way to initialize a non-member static attribute
+*/
