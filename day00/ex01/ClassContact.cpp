@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 16:58:30 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/11 21:28:21 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/11 23:37:46 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 
 Contact::Contact(void)
 {
-//	std::cout << "Welcome to phonbook program." << std::endl;
-//	phonebookUsage(false);
+	/*
+	** Calling constructor
+	*/
 	return;
 }
 
@@ -79,24 +80,30 @@ void phonebookUsage(bool error)
 	std::cout << "EXIT" << std::endl << std::endl;
 }
 
+/*
+	Contact *ci;
+	ci = contactInstance;
+
+	ci is just a reference or pointer to contactInstance;
+
+*/
+
 void phonebookPrint(Contact *contactInstance)
 {
-//	const char *top_cell = "|index| first name| last name| login| nickname";
-//	std::cout << "|index| first name| last name| login|" << std::endl;
-//	std::cout << cI->firstName << cI-
-//	std::cout << 
+	Contact *ci;
+	ci = contactInstance;
 	std::cout << std::endl;
-	std::cout << "First Name: " << contactInstance->firstName << std::endl;
-	std::cout << "Last Name: " << contactInstance->lastName << std::endl;
-	std::cout << "Nick Name: " << contactInstance->nickName << std::endl;
-	std::cout << "Login: " << contactInstance->login << std::endl;
-	std::cout << "Postal Address: " << contactInstance->postalAddress << std::endl;
-	std::cout << "Email Address: " << contactInstance->emailAddress << std::endl;
-	std::cout << "Phone Number: " << contactInstance->phoneNumber << std::endl;
-	std::cout << "Birthday Date: " << contactInstance->birthdayDate << std::endl;
-	std::cout << "Favorite Meal: " << contactInstance->favoriteMeal << std::endl;
-	std::cout << "Underwear Color: " << contactInstance->underwearColor << std::endl;
-	std::cout << "Darkest Secret: " << contactInstance->darkestSecret << std::endl;
+	std::cout << "First Name: " << ci->firstName << std::endl;
+	std::cout << "Last Name: " << ci->lastName << std::endl;
+	std::cout << "Nick Name: " << ci->nickName << std::endl;
+	std::cout << "Login: " << ci->login << std::endl;
+	std::cout << "Postal Address: " << ci->postalAddress << std::endl;
+	std::cout << "Email Address: " << ci->emailAddress << std::endl;
+	std::cout << "Phone Number: " << ci->phoneNumber << std::endl;
+	std::cout << "Birthday Date: " << ci->birthdayDate << std::endl;
+	std::cout << "Favorite Meal: " << ci->favoriteMeal << std::endl;
+	std::cout << "Underwear Color: " << ci->underwearColor << std::endl;
+	std::cout << "Darkest Secret: " << ci->darkestSecret << std::endl;
 
 }
 
@@ -106,20 +113,29 @@ void welcomeUser(void)
 	phonebookUsage(false);
 }
 
-void showSavedContacts(Contact *contactInstance)
+void showSavedContacts(Contact *contactInstance, int numberOfContacts)
 {
+	int i = 0;
 	const char *headerdash= "____________________________________________";
-	const char *headerRow = "|index     |first name|last name |nickname  |";
+	const char *headerRow = "|     index|first name| last name|  nickname|";
 	std::cout << headerdash << std::endl << headerRow << std::endl;
-
+	while(i < numberOfContacts)
+	{
+		std::cout << "|" << std::setw(10) << i; // Index
+		std::cout << "|" << std::setw(10) << contactInstance[i].firstName;
+		std::cout << "|" << std::setw(10) << contactInstance[i].lastName;
+		std::cout << "|" << std::setw(10) << contactInstance[i].nickName;
+		std::cout << "|" << std::endl;
+		i++;
+	}
 }
 
-void searchContact(Contact *contactInstance)
+void searchContact(Contact *contactInstance, int numberOfContacts)
 {
 	int index = 0;
 	std::string contactIndex;
 	
-	showSavedContacts(contactInstance);
+	showSavedContacts(contactInstance, numberOfContacts);
 	std::cout << "Please enter the index of the contact: ";
 	std::getline(std::cin, contactIndex);
 //	std::cout << contactIndex;
@@ -152,7 +168,7 @@ void commandLineStream(Contact *contactInstance)
 		}
 		else if(str == "SEARCH")
 		{
-			searchContact(contactInstance);
+			searchContact(contactInstance, i);
 /*			
 			std::cout << "Please enter the index of the contact: ";
 			std::getline(std::cin, contactIndex);

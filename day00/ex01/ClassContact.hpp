@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 16:23:00 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/11 21:28:24 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/11 23:34:07 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 
 
 # include <iostream>
+# include <iomanip>
 # include <string>
 
 /*
 Notes about headers or libraries that are included
 # include <iostream> 	- to access cout, cin, getline
+# include <iomanip>		- to access setw
+# include <string> 		- to access stoi
 */
 
 /*
@@ -59,7 +62,7 @@ class Contact
 
 };
 
-void searchContact(Contact *contactInstance);
+void searchContact(Contact *contactInstance, int numberOfContacts);
 //void phonebookUsage(bool error);
 void commandLineStream(Contact *contactInstance);
 void addContactName(Contact *addContact);
