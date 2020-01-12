@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 16:23:00 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/11 20:40:58 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/11 21:28:24 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,13 @@ class Contact
 
 	private:
 		void welcomeUser(void);
+		void phonebookUsage(bool error);
 
 
 };
 
 void searchContact(Contact *contactInstance);
-void phonebookUsage(bool error);
+//void phonebookUsage(bool error);
 void commandLineStream(Contact *contactInstance);
 void addContactName(Contact *addContact);
 void phonebookPrint(Contact *contactInstance);

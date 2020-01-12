@@ -6,12 +6,12 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 16:58:30 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/11 20:35:31 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/11 21:28:21 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ClassContact.hpp"
-# include <string>
+//# include <string>
 //#include <stdio.h>
 //#include <string.h>
 
@@ -70,7 +70,7 @@ Contact::~Contact(void)
 
 void phonebookUsage(bool error)
 {
-	const char *str = "Please use one of the following commands to use the program";
+	const char *str = "Please use one of the following commands to use the program:";
 	if(error == true)
 		std::cout << "Invalid Input" << std::endl;
 	std::cout << str << std::endl;
@@ -106,27 +106,36 @@ void welcomeUser(void)
 	phonebookUsage(false);
 }
 
+void showSavedContacts(Contact *contactInstance)
+{
+	const char *headerdash= "____________________________________________";
+	const char *headerRow = "|index     |first name|last name |nickname  |";
+	std::cout << headerdash << std::endl << headerRow << std::endl;
+
+}
+
 void searchContact(Contact *contactInstance)
 {
 	int index = 0;
 	std::string contactIndex;
-
+	
+	showSavedContacts(contactInstance);
 	std::cout << "Please enter the index of the contact: ";
 	std::getline(std::cin, contactIndex);
-	std::cout << contactIndex;
-	index = std::stoi(contactIndex);
-	if(index >= 0 && index <= 7)
+//	std::cout << contactIndex;
+	if(contactIndex[0] >= '0' && contactIndex[0] <= '7' && contactIndex[1] == '\0')
+	{
+		index = std::stoi(contactIndex);
 		phonebookPrint(&contactInstance[index]);
+	}
 	else
-		std::cout << "Please enter the index of correct contact" << std::endl;
+		std::cout << "Please enter correct contact index." << std::endl << std::endl;
 }
 
 void commandLineStream(Contact *contactInstance)
 {
 	int i = 0;
-//	int index = 0;//
 	std::string str;
-//	std::string contactIndex;//
 	welcomeUser();
 
 	while(true)
@@ -135,7 +144,12 @@ void commandLineStream(Contact *contactInstance)
 		std::getline(std::cin, str);
 
 		if(str == "ADD")
-			addContactName(&contactInstance[i++]);
+		{
+			if(i == 8)
+				std::cout << "Sorry Cannot enter anymore contacts" << std::endl;
+			else
+				addContactName(&contactInstance[i++]);
+		}
 		else if(str == "SEARCH")
 		{
 			searchContact(contactInstance);

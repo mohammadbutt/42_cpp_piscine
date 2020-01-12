@@ -6,12 +6,14 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 18:06:31 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/07 18:44:00 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/11 16:40:00 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef  SAMPLE_CLASS_H
 # define SAMPLE_CLASS_H
+
+#include <iostream>
 
 class Sample
 {

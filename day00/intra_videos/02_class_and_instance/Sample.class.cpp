@@ -6,11 +6,11 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 18:06:49 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/07 18:43:54 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/11 16:39:26 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+//#include <iostream>
 #include "Sample.class.hpp"
 
 Sample::Sample(void)
