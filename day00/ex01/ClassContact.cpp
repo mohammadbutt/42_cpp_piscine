@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 16:58:30 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/12 17:17:01 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/12 17:23:30 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,8 +192,10 @@ void commandLineStream(Contact *contactInstance)
 	std::cout << "Have a good day" << std::endl;
 }
 
+/*
 int main(void)
 {
 	Contact contactInstance[8];
 	commandLineStream(contactInstance);	
 }
+*/
