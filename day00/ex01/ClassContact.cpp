@@ -6,14 +6,11 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 16:58:30 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/11 23:37:46 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/12 17:17:01 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ClassContact.hpp"
-//# include <string>
-//#include <stdio.h>
-//#include <string.h>
 
 Contact::Contact(void)
 {
@@ -71,7 +68,7 @@ Contact::~Contact(void)
 
 void phonebookUsage(bool error)
 {
-	const char *str = "Please use one of the following commands to use the program:";
+	const char *str = "Please use following commands to use the program:";
 	if(error == true)
 		std::cout << "Invalid Input" << std::endl;
 	std::cout << str << std::endl;
@@ -117,35 +114,53 @@ void showSavedContacts(Contact *contactInstance, int numberOfContacts)
 {
 	int i = 0;
 	const char *headerdash= "____________________________________________";
+//	const char *gridDash  = "|__________|__________|__________|__________|";
 	const char *headerRow = "|     index|first name| last name|  nickname|";
+	std::string firstName;
+	std::string lastName;
+	std::string nickName;
+	
 	std::cout << headerdash << std::endl << headerRow << std::endl;
 	while(i < numberOfContacts)
 	{
-		std::cout << "|" << std::setw(10) << i; // Index
-		std::cout << "|" << std::setw(10) << contactInstance[i].firstName;
-		std::cout << "|" << std::setw(10) << contactInstance[i].lastName;
-		std::cout << "|" << std::setw(10) << contactInstance[i].nickName;
+		firstName = contactInstance[i].firstName;
+		lastName = contactInstance[i].lastName;
+		nickName = contactInstance[i].nickName;
+		firstName = firstName.substr(0, 10);
+		lastName = lastName.substr(0, 10);
+		nickName = nickName.substr(0, 10);
+		
+		(firstName.length() >= 10) && (firstName[9] = '.');
+		(lastName.length() >= 10) && (lastName[9] = '.');
+		(nickName.length() >= 10) && (nickName[9] = '.');
+		std::cout << "|" << std::setw(10) << i;
+		std::cout << "|" << std::setw(10) << firstName;
+		std::cout << "|" << std::setw(10) << lastName;
+		std::cout << "|" << std::setw(10) << nickName;
+
 		std::cout << "|" << std::endl;
+//		std::cout << gridDash << std::endl;
 		i++;
 	}
 }
 
 void searchContact(Contact *contactInstance, int numberOfContacts)
 {
+	const char *message1 = "Please enter the index of the contact: ";
+	const char *errorMessage = "Please enter the correct contact index.";
 	int index = 0;
 	std::string contactIndex;
 	
 	showSavedContacts(contactInstance, numberOfContacts);
-	std::cout << "Please enter the index of the contact: ";
+	std::cout << message1;
 	std::getline(std::cin, contactIndex);
-//	std::cout << contactIndex;
 	if(contactIndex[0] >= '0' && contactIndex[0] <= '7' && contactIndex[1] == '\0')
 	{
 		index = std::stoi(contactIndex);
 		phonebookPrint(&contactInstance[index]);
 	}
 	else
-		std::cout << "Please enter correct contact index." << std::endl << std::endl;
+		std::cout << errorMessage << std::endl << std::endl;
 }
 
 void commandLineStream(Contact *contactInstance)
@@ -167,51 +182,18 @@ void commandLineStream(Contact *contactInstance)
 				addContactName(&contactInstance[i++]);
 		}
 		else if(str == "SEARCH")
-		{
 			searchContact(contactInstance, i);
-/*			
-			std::cout << "Please enter the index of the contact: ";
-			std::getline(std::cin, contactIndex);
-			std::cout << contactIndex;
-			index = std::stoi(contactIndex);
-			if(index >= 0 && index <= 7)
-				phonebookPrint(&contactInstance[index]);
-			else if(index == 8)
-				break;
-			else
-				std::cout << "Please enter the index of correct contact" << std::endl;
-*/			
-		}
+		else if(str == "EXIT")
+			break;
 		else
 			phonebookUsage(true);
 	}
-
-
+	std::cout << "Exiting program" << std::endl;
+	std::cout << "Have a good day" << std::endl;
 }
 
 int main(void)
 {
 	Contact contactInstance[8];
-
-	commandLineStream(contactInstance);
-
-	phonebookPrint(&contactInstance[0]);
-	
-//	while(true)
-//	{
-//		std::cout << "phonebook > ";
-//		std::getline(std::cin, str);
-//
-//		if(str == "ADD")
-//			addContactName(&contactInstance[i++]);
-//		else if(str == "SEARCH")
-//		{
-//			std::getline(std::cin, contactIndex);
-//			std::cout << contactIndex;
-//			if(contactIndex >= '0' && contactIndex <= '7')
-//				phonebookPrint(&contactInstance[i]);
-//		}
-//		else
-//			phonebookUsage(true);
-//	}
+	commandLineStream(contactInstance);	
 }

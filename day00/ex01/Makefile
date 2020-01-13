@@ -6,9 +6,12 @@
 #    By: mbutt <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/09 20:00:30 by mbutt             #+#    #+#              #
-#    Updated: 2020/01/11 18:26:30 by mbutt            ###   ########.fr        #
+#    Updated: 2020/01/12 17:20:10 by mbutt            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+NC:=\033[0m
+GREEN:=\033[1;32m
 
 NAME = phonebook
 CC = g++
@@ -23,6 +26,8 @@ all: $(NAME)
 $(NAME):
 	$(CC) $(CFLAGS) $(WFLAGS) $(SRC) # creates object file
 	$(CC) $(OBJ) -o $(NAME)
+	@echo "${GREEN}Generated phonebook program succesfully.${NC}"	
+
 
 clean:
 	/bin/rm -rf $(OBJ)
