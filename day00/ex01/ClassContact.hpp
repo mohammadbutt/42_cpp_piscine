@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 16:23:00 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/12 17:17:05 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/12 17:48:11 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ class Contact
 	private:
 		void welcomeUser(void);
 		void phonebookUsage(bool error);
+		void phoneBookLogo(void);
 
 
 };

@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 16:58:30 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/12 17:23:30 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/12 17:56:42 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,12 +149,13 @@ void searchContact(Contact *contactInstance, int numberOfContacts)
 	const char *message1 = "Please enter the index of the contact: ";
 	const char *errorMessage = "Please enter the correct contact index.";
 	int index = 0;
+	char max = numberOfContacts - 1  + '0';
 	std::string contactIndex;
 	
 	showSavedContacts(contactInstance, numberOfContacts);
 	std::cout << message1;
 	std::getline(std::cin, contactIndex);
-	if(contactIndex[0] >= '0' && contactIndex[0] <= '7' && contactIndex[1] == '\0')
+	if(contactIndex[0] >= '0' && contactIndex[0] <= max && contactIndex[1] == '\0')
 	{
 		index = std::stoi(contactIndex);
 		phonebookPrint(&contactInstance[index]);
@@ -163,10 +164,26 @@ void searchContact(Contact *contactInstance, int numberOfContacts)
 		std::cout << errorMessage << std::endl << std::endl;
 }
 
+void phoneBookLogo(void)
+{
+ const char *line1 = " _____  _                      _                 _";
+ const char *line2 = "|  __ \\| |                    | |               | |";
+ const char *line3 = "| |__) | |__   ___  _ __   ___| |__   ___   ___ | | __";
+ const char *line4 = "|  ___/| '_ \\ / _ \\| '_ \\ / _ \\ '_ \\ / _ \\ / _ \\| |/ /";
+ const char *line5 = "| |    | | | | (_) | | | |  __/ |_) | (_) | (_) |   <";
+ const char *line6 = "|_|    |_| |_|\\___/|_| |_|\\___|_.__/ \\___/ \\___/|_|\\_\\";
+ const char *signature = " by Mohammad Butt";
+
+ std::cout << line1 << std::endl << line2 << std::endl;
+ std::cout << line3 << signature << std::endl << line4 << std::endl;
+ std::cout << line5 << std::endl << line6 << std::endl;
+}
+
 void commandLineStream(Contact *contactInstance)
 {
 	int i = 0;
 	std::string str;
+	phoneBookLogo();
 	welcomeUser();
 
 	while(true)
@@ -191,11 +208,3 @@ void commandLineStream(Contact *contactInstance)
 	std::cout << "Exiting program" << std::endl;
 	std::cout << "Have a good day" << std::endl;
 }
-
-/*
-int main(void)
-{
-	Contact contactInstance[8];
-	commandLineStream(contactInstance);	
-}
-*/
