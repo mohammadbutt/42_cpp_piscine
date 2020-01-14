@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   ZombieHorde.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/13 15:56:04 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/13 22:11:01 by mbutt            ###   ########.fr       */
+/*   Created: 2020/01/13 22:34:29 by mbutt             #+#    #+#             */
+/*   Updated: 2020/01/14 14:13:36 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#ifndef ZOMBIEHORDE_HPP
+# define ZOMBIEHORDE_HPP
 
 #include <iostream>
 #include <string>
-//#include "ZombieEvent.hpp"
+#include <stdlib.h>
+#include "Zombie.hpp"
 
-class Zombie
+class ZombieHorde
 {
 	private:
-		std::string _name; // private members prefixed by _ underscore
-		std::string _type; // private members prefixed by _ underscore
-	public:	
-		Zombie(void); // Default
-		Zombie(std:: string name, std::string type);
-		~Zombie(void);
-		void announce(void);
-//		std::string type;
-//		std::string name;
+		std::string _type;
+		int _numberOfZombies;
+	public:
+		ZombieHorde(void);
+		ZombieHorde(int numberOfZombies);
+		~ZombieHorde(void);
+		void 	setZombieType(std::string type);
+		Zombie *newZombie(std::string name);
+		int 	randomNumberGenerator(int min, int max);
+		Zombie 	*randomZombie(void);
+		void	userReleaseZombie(int numberOfZombies);
 };
 
 #endif
