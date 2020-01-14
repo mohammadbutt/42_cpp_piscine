@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 14:34:22 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/14 15:20:12 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/14 15:34:42 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,24 @@ variable.
 
 int main(void)
 {
+/*
+//References the pointer
+	const char *str1 = "abcd";
+	const char **str2 = &str1;
+	std::cout << str1 << std::endl;
+	*str2 = "abcdefgh";
+	std::cout << str1 << std::endl;
+*/
+
+/*
+Makes a copy of str1
+	const char *str1 = "abcd";
+	const char *str2 = str1;
+	std::cout << str1 << std::endl;
+	str2 = "abcdefgh";
+	std::cout << str1 << std::endl;
+*/
+
 	std::string str = "HI THIS IS BRAIN";
 	std::string *pointer_str = &str;
 	std::string &reference_str1 = str;
