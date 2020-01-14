@@ -6,11 +6,12 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:58:13 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/13 14:35:26 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/13 15:52:33 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Pony.hpp"
+
 
 void ponyOnTheHeap(std:: string ponyName)
 {
@@ -24,6 +25,7 @@ void ponyOnTheStack(std:: string ponyName)
 	Pony stackPony = Pony(ponyName);
 	return; // Stack Pony is deleted
 }
+
 
 int main(void)
 {
