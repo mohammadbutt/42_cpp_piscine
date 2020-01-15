@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/12 17:21:33 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/13 12:09:23 by mbutt            ###   ########.fr       */
+/*   Created: 2020/01/15 14:33:18 by mbutt             #+#    #+#             */
+/*   Updated: 2020/01/15 15:00:35 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <ClassContact.hpp>
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
 
-int main(void)
+#include "Weapon.hpp"
+#include <iostream>
+#include <string>
+
+class HumanB
 {
-	Contact contactInstance[8];
-	commandLineStream(contactInstance);
-}
+	private:
+		std::string _name;
+		Weapon *_weapon;
+	public:
+		HumanB(void);
+		HumanB(std::string name);
+		~HumanB(void);
+		void setWeapon(Weapon &weapon);
+		void attack(void);
+};
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 16:58:30 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/12 17:56:42 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/13 12:08:58 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,7 @@ void commandLineStream(Contact *contactInstance)
 	std::string str;
 	phoneBookLogo();
 	welcomeUser();
-
+//	&contactInstance->welcomeUser();
 	while(true)
 	{
 		std::cout << "phonebook > ";

@@ -1,19 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/12 17:21:33 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/13 12:09:23 by mbutt            ###   ########.fr       */
+/*   Created: 2020/01/14 22:31:25 by mbutt             #+#    #+#             */
+/*   Updated: 2020/01/15 13:47:38 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <ClassContact.hpp>
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
-int main(void)
+#include <iostream>
+#include <string>
+
+class Weapon
 {
-	Contact contactInstance[8];
-	commandLineStream(contactInstance);
-}
+	private:
+		std::string _type;
+	public:
+		Weapon(void); // Default constructor
+		Weapon(std::string type);
+		~Weapon(void);
+		const std::string getType(void) const;
+		void setType(std::string);
+};
+
+
+# endif
