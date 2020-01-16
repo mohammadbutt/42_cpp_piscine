@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 13:49:28 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/15 14:36:21 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/15 15:22:56 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ class HumanA
 		std::string _name;
 		Weapon &_weapon; // weapon class. Is it better to keep class in private?
 	public:
-//		HumanA(void); // default constructor
 		HumanA(std::string name, Weapon &weapon);
 		~HumanA(void); // destructor
 		void attack(void);

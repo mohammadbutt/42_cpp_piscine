@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:55:54 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/15 14:28:08 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/15 15:33:33 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Weapon::Weapon(void)
 
 Weapon::Weapon(std::string type)
 {
-//	std::cout << "Constructor with weapon called " << std::endl;
+	std::cout << "Calling constructor with weapon: ";
 	Weapon::setType(type);
 
 	std::cout << Weapon::getType() << std::endl;
@@ -41,7 +41,7 @@ Weapon::Weapon(std::string type)
 
 Weapon::~Weapon(void)
 {
-	std::cout << "Calling Weapon Destructor" << std::endl;
+	std::cout << "Calling Weapon Destructor" << std::endl << std::endl;
 }
 
 const std::string Weapon::getType(void) const

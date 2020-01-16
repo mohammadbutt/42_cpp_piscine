@@ -6,34 +6,28 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 13:56:08 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/15 15:02:30 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/15 15:33:43 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanA.hpp"
 
-/*
-HumanA::HumanA(void)
-{
-	return; // Default Constructor
-}
-*/
-
 HumanA::HumanA(std::string name, Weapon &weapon) : _name(name), _weapon(weapon)
 {
 //	this->_name = name; // We dont need to do this because we already did it in
 						// function prototype
+	std::cout << "Calling class HumanA" << std::endl;
 }
 
 HumanA::~HumanA(void)
 {
-
+	std::cout << "Calling HumanA destructor" << std::endl;
 	return; // Destructor
 }
 
 void HumanA::attack(void)
 {
-	const char *str = " attacks with ";
+	const char *str = " attacks with: ";
 	std::cout << this->_name << str << _weapon.getType() << std::endl;
 }
 

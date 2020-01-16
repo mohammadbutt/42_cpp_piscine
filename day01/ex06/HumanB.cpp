@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 14:37:59 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/15 15:02:43 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/15 15:44:06 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 HumanB::HumanB(void)
 {
-
+	return;
 }
 
 HumanB::HumanB(std::string name) : _name(name)
@@ -30,14 +30,13 @@ HumanB::~HumanB(void)
 
 void HumanB::attack(void)
 {
-	const char *str = " attacks with ";
+	const char *str = " attacks with: ";
 	std::cout << this->_name << str << _weapon->getType() << std::endl;
 }
 
 void HumanB::setWeapon(Weapon &weapon) //: _weapon(weapon);
 {
 	this->_weapon = &weapon;
-//	return;
 }
 
 /*
