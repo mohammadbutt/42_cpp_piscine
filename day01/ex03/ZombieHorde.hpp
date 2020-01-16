@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 22:34:29 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/15 19:06:15 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/15 19:18:22 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 #include <cstdlib>
 #include <ctime>
 #include "Zombie.hpp"
+
+/*
+** Using <cstdlib>, instead of <stdlib.h>
+** using <ctime> to generate random seed for rand function
+*/
 
 class ZombieHorde
 {
