@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 17:40:01 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/15 18:54:18 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/15 19:33:17 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,21 @@
 void usage(void)
 {
 	const char *line1 = "usage:";
-	const char *line2 = "./replace testfile old_word new_word outputFileName";
+	const char *line2 = "./replace testfile old_word new_word";
 	const char *line3 = "Exiting program";
 
 	std::cout << line1 << std::endl  << line2 << std::endl;
 	std::cout << line3 << std::endl;
+}
+
+bool ifStringIsEmpty(int position)
+{
+	if(position == 0)
+	{
+		usage();
+		return(true);
+	}
+	return(false);
 }
 
 int main(int argc, char *argv[])
@@ -47,11 +57,8 @@ int main(int argc, char *argv[])
 	{
 
 		position = subject.find(oldStr);
-		if(position == 0)
-		{
-			usage();
+		if(ifStringIsEmpty(position) == true)
 			return(1);
-		}
 		while((position = subject.find(oldStr, position)) != std::string::npos)
 		{
 			subject.replace(position, oldStr.length(), newStr);
