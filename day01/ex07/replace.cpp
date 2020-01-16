@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 17:40:01 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/15 18:10:53 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/15 18:54:18 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,37 @@ void usage(void)
 
 int main(int argc, char *argv[])
 {	
-	if(argc != 5)
+	if(argc != 4)
 	{
 		usage();
 		return(1);
 	}
+	size_t position = 0;
 	std::string fileName = argv[1];
 	std::string oldStr = argv[2];
 	std::string newStr = argv[3];
+	std::string subject;
 	std::ifstream opennedFile(fileName);
 	std::ofstream savedFile(fileName + ".output");
-	
-//	std::cout << fileName << std::endl;
-//	std::cout << oldStr << std::endl;
-//	std::cout << newStr << std::endl;
+	if(savedFile == NULL)
+	{
+		std::cout << "Unable to save file. Exiting program" << std::endl;
+		return(1);
+	}
+	while(std::getline(opennedFile, subject))
+	{
 
+		position = subject.find(oldStr);
+		if(position == 0)
+		{
+			usage();
+			return(1);
+		}
+		while((position = subject.find(oldStr, position)) != std::string::npos)
+		{
+			subject.replace(position, oldStr.length(), newStr);
+			position = position + newStr.length();
+		}
+		savedFile << subject << std::endl;
+	}
 }
