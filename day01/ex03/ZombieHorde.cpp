@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 22:51:11 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/14 14:13:33 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/15 19:10:14 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,11 @@ int ZombieHorde::randomNumberGenerator(int min, int max)
 	randomNumber = 0;
 	difference = max - min;
 
-	randomNumber = arc4random() % (difference + 1);
+//	randomNumber = arc4random() % (difference + 1);
+
+	std::srand(std::time(0)); // These two lines can be replaced by above for C
+	randomNumber = std::rand() % (difference + 1);//
+
 	randomNumber = randomNumber + min;
 	return(randomNumber);
 }
