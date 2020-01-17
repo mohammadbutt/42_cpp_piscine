@@ -1,44 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/17 10:05:36 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/17 15:00:55 by mbutt            ###   ########.fr       */
+/*   Created: 2020/01/17 15:04:16 by mbutt             #+#    #+#             */
+/*   Updated: 2020/01/17 15:28:21 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 
-FragTrap::FragTrap(void)
+ScavTrap::ScavTrap(void)
 {
 	std::cout << "Calling Default constructor" << std::endl;
 }
 
-FragTrap::FragTrap(std::string const playerName)
+ScavTrap::ScavTrap(std::string const playerName)
 {
 	_playerName = playerName;
 	_hitPoints = 100;
 	_maxHitPoints = 100;
-	_energyPoints = 100;
-	_maxEnergyPoints = 100;
+	_energyPoints = 50;
+	_maxEnergyPoints = 50;
 	_level = 1;
-	_meleeAttackDamage = 30;
-	_rangedAttackDamage = 20;
-	_armorDamageReduction = 5;
+	_meleeAttackDamage = 20;
+	_rangedAttackDamage = 15;
+	_armorDamageReduction = 3;
 
 	std::cout << "Summoning player: " << _playerName << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap &srcCopy)
+ScavTrap::ScavTrap(const ScavTrap &srcCopy)
 {
 	std::cout << "Calling copy player" << std::endl;
 	*this = srcCopy;
 }
 
-FragTrap &FragTrap::operator = (const FragTrap &rhs)
+ScavTrap &ScavTrap::operator = (const ScavTrap &rhs)
 {
 
 	std::cout << "Calling = operator player for ";
@@ -59,57 +59,57 @@ FragTrap &FragTrap::operator = (const FragTrap &rhs)
 	return(*this);
 }
 
-FragTrap::~FragTrap(void)
+ScavTrap::~ScavTrap(void)
 {
 	std::cout << "Calling destructor" << std::endl;
 }
 // Getter functions
-std::string FragTrap::getPlayerName(void) const
+std::string ScavTrap::getPlayerName(void) const
 {
 	return(_playerName);
 }
 
-unsigned int FragTrap::getHitPoints(void) const
+unsigned int ScavTrap::getHitPoints(void) const
 {
 	return(_hitPoints);
 }
 
-unsigned int FragTrap::getMaxHitPoints(void) const
+unsigned int ScavTrap::getMaxHitPoints(void) const
 {
 	return(_maxHitPoints);
 }
 
-unsigned int FragTrap::getEnergyPoints(void) const
+unsigned int ScavTrap::getEnergyPoints(void) const
 {
 	return(_energyPoints);
 }
 
-unsigned int FragTrap::getMaxEnergyPoints(void) const
+unsigned int ScavTrap::getMaxEnergyPoints(void) const
 {
 	return(_maxEnergyPoints);
 }
 
-unsigned int FragTrap::getLevel(void) const
+unsigned int ScavTrap::getLevel(void) const
 {
 	return(_level);
 }
 
-unsigned int FragTrap::getMeleeAttackDamage(void) const
+unsigned int ScavTrap::getMeleeAttackDamage(void) const
 {
 	return(_meleeAttackDamage);
 }
 
-unsigned int FragTrap::getRangedAttackDamage(void) const
+unsigned int ScavTrap::getRangedAttackDamage(void) const
 {
 	return(_rangedAttackDamage);
 }
 
-unsigned int FragTrap::getArmorDamageReduction(void) const
+unsigned int ScavTrap::getArmorDamageReduction(void) const
 {
 	return(_armorDamageReduction);
 }
 
-int FragTrap::randomNumberGenerator(int min, int max)
+int ScavTrap::randomNumberGenerator(int min, int max)
 {
 	int randomNumber = 0;
 	std::random_device rand;
@@ -119,7 +119,7 @@ int FragTrap::randomNumberGenerator(int min, int max)
 	return(randomNumber);
 }
 
-void FragTrap::rangedAttack(std::string const &target)
+void ScavTrap::rangedAttack(std::string const &target)
 {
 	const char *str1 = "FR4G-TP < ";
 	const char *str2 = " > attacks < ";
@@ -138,7 +138,7 @@ void FragTrap::rangedAttack(std::string const &target)
 	}
 }
 
-void FragTrap::meleeAttack(std:: string const &target)
+void ScavTrap::meleeAttack(std:: string const &target)
 {
 	const char *str1 = "FR4G-TP < ";
 	const char *str2 = " > attacks < ";
@@ -157,7 +157,7 @@ void FragTrap::meleeAttack(std:: string const &target)
 	}
 }
 
-void FragTrap::takeDamage(unsigned int amount)
+void ScavTrap::takeDamage(unsigned int amount)
 {
 	const char *str1 = "FR4G-TP < ";
 	const char *str2 = " > attacks target cauing < ";
@@ -183,7 +183,7 @@ void FragTrap::takeDamage(unsigned int amount)
 
 }
 
-void FragTrap::beRepaired(unsigned int amount)
+void ScavTrap::beRepaired(unsigned int amount)
 {
 	const char *str1 = "FR4G-TP < ";
 	const char *str2 = " > energy recoved by < ";
@@ -197,27 +197,26 @@ void FragTrap::beRepaired(unsigned int amount)
 	std::cout << str4 << _maxHitPoints << str3 << std::endl;
 }
 
-void FragTrap::vaulthunter_dot_exe(std::string const &target)
+void ScavTrap::challengeNewComer(std::string const &target)
 {
 	int i = randomNumberGenerator(0, 5);
-	const char *atk1 = "hadokinnnnnnnnnnn>";
-	const char *atk2 = "sharokinnnnnnnnnn>";
-	const char *atk3 = "yoga snooooooowww>";
-	const char *atk4 = "kamahamahaaaaaaaa>";
-	const char *atk5 = "thunderrrrrrrrrrr>";
-	const char *atk6 = "freezeeeeeeeeeeee>";
-	const char *attacks[] = {atk1, atk2, atk3, atk4, atk5, atk6};
+	const char *chal1 = "> to <climb the mountain>";
+	const char *chal2 = "> to <eat 100 Popeyes chicken sandwiches>";
+	const char *chal3 = "> to <code for 16 hours straight>";
+	const char *chal4 = "> to <Fast for 24 hours>";
+	const char *chal5 = "> to <Run 10 miles in one hour>";
+	const char *chal6 = "> to <Make a website in C programming language>";
+	const char *challenge[] = {chal1, chal2, chal3, chal4, chal5, chal6};
 	const char *str1 = "FR4G-TP <";
-	const char *str2 = "> attacks target <";
-	const char *str3 = "> with Special attack: <";
-	
-	if(_maxEnergyPoints >= 25)
-	{
-		std::cout << str1 << _playerName << str2 << target <<  str3;
-		std::cout << attacks[i] << std::endl;
-		_maxEnergyPoints = _maxEnergyPoints - 25;
-	}
-	else if (_maxEnergyPoints == 0)
-		std::cout << "Cannot use special attack anymore" << std::endl;
+	const char *str2 = "> challenges opponent <";
 
+//	if(_maxEnergyPoints >= 25)
+//	{
+//		std::cout << str1 << _playerName << str2 << target <<  str3;
+//		std::cout << attacks[i] << std::endl;
+//		_maxEnergyPoints = _maxEnergyPoints - 25;
+//	}
+//	else if (_maxEnergyPoints == 0)
+//		std::cout << "Cannot use special attack anymore" << std::endl;
+	std::cout << str1 << _playerName << str2 << target << challenge[i] << std::endl;
 }

@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/17 09:54:55 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/17 15:02:08 by mbutt            ###   ########.fr       */
+/*   Created: 2020/01/17 15:03:13 by mbutt             #+#    #+#             */
+/*   Updated: 2020/01/17 15:13:04 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
 #include <string>
 #include <iostream>
-//#include <cstdlib>
-//#include <ctime>
 #include <random>
 
-class FragTrap
+class ScavTrap
 {
 	public:
-		FragTrap(void); // Default constructor - Canonical
-		FragTrap(std::string const playerName); // Constructor to pass in name
-		FragTrap(const FragTrap &srcCopy); // Copy constructor - Cannonical	
-		FragTrap &operator = (const FragTrap &rhs); // Operator assignment - Canonical
-		~FragTrap(void); // Default Destructor - Canonical
+		ScavTrap(void); // Default constructor - Canonical
+		ScavTrap(std::string const playerName); // Constructor to pass in name
+		ScavTrap(const ScavTrap &srcCopy); // Copy constructor - Cannonical	
+		ScavTrap &operator = (const ScavTrap &rhs); // Operator assignment - Canonical
+		~ScavTrap(void); // Default Destructor - Canonical
 	
 		// My own member functions / getters to output the value
 		std::string getPlayerName(void) const;
@@ -44,7 +42,8 @@ class FragTrap
 		void meleeAttack(std::string const &target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
-		void vaulthunter_dot_exe(std::string const &target);
+//		void vaulthunter_dot_exe(std::string const &target);
+		void challengeNewComer(std:: string const &target);
 		int  randomNumberGenerator(int min, int max);
 	
 	private:
