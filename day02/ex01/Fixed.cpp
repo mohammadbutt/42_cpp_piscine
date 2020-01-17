@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 12:58:04 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/16 19:16:44 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/16 19:23:07 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ int Fixed::getRawBits(void) const
 
 float Fixed::toFloat(void) const
 {
-	std::cout << "Calling to Float member function." << std::endl;
 	return((float)_fixedPointInteger / (1 << _fixedPointFraction));
 }
 
@@ -97,7 +96,6 @@ float Fixed::toFloat(void) const
 
 int Fixed::toInt(void) const
 {
-	std::cout << "Return of Int:" << std::endl;
 	return(_fixedPointInteger >> _fixedPointFraction);
 }
 
@@ -109,20 +107,29 @@ bool Fixed::isIntGetter(void) const
 std::ostream &operator<<(std::ostream &output, const Fixed &i)
 {
 	if(i.isIntGetter() == true)
-	{
-		std::cout << "Enters int" << std::endl;
 		output << i.toInt();
-	}
 	else if(i.isIntGetter() == false)
-	{
-		std::cout << "Enters float" << std::endl;
 		output << i.toFloat();
-	}
 	return(output);
 }
 
 int main(void)
 {
 	Fixed a;
+	Fixed const b(10);
+	Fixed const c(42.42f);
+	Fixed const d(b);
+
+	a = Fixed(1234.4321f);
+
+	std::cout << "a is " << a << std::endl;
+	std::cout << "b is " << b << std::endl;
+	std::cout << "c is " << c << std::endl;
+	std::cout << "d is " << d << std::endl;
+
+	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 
 }
