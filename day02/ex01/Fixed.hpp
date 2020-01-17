@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 12:57:11 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/16 19:23:10 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/16 19:46:09 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ class Fixed
 		static const int	_fixedPointFraction;
 };
 
-std::ostream &operator<<(std::ostream &output, const Fixed &i);
+std::ostream &operator << (std::ostream &output, const Fixed &i);
 
 # endif
