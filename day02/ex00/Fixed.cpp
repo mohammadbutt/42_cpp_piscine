@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 11:21:30 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/16 12:28:17 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/16 16:25:56 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,19 @@ Fixed::Fixed(Fixed const &src)
 	return;
 }
 
-Fixed & Fixed::operator=(Fixed const &rhs)
+Fixed &Fixed::operator=(Fixed const &rhs)
 {
 	std::cout << "Assignment operator called" << std::endl;
 	if(this != &rhs)
 		this->_fixedPointInteger = rhs.getRawBits();
-	return *this;
+	return (*this);
+}
+void Fixed::setRawBits(int const raw)
+{
+	this->_fixedPointInteger = raw;
+
+	std::cout << "set _fixedPointInteger value to: ";
+	std::cout << this->_fixedPointInteger << std::endl;
 }
 
 int Fixed::getRawBits(void) const
@@ -50,13 +57,6 @@ int Fixed::getRawBits(void) const
 	return(this->_fixedPointInteger);
 }
 
-void Fixed::setRawBits(int const raw)
-{
-	this->_fixedPointInteger = raw;
-
-	std::cout << "set _fixedPointInteger value to: ";
-	std::cout << this->_fixedPointInteger << std::endl;
-}
 
 Fixed::~Fixed(void)
 {
