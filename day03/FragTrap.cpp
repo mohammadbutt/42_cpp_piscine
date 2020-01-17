@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 10:05:36 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/17 13:32:52 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/17 14:53:03 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ FragTrap::FragTrap(std::string const playerName)
 	_meleeAttackDamage = 30;
 	_rangedAttackDamage = 20;
 	_armorDamageReduction = 5;
+	_randomNumber = 0;
 
 	std::cout << "Summoning player: " << _playerName << std::endl;
 }
@@ -109,6 +110,16 @@ unsigned int FragTrap::getArmorDamageReduction(void) const
 	return(_armorDamageReduction);
 }
 
+int FragTrap::randomNumberGenerator(int min, int max)
+{
+	int randomNumber = 0;
+	std::random_device rand;
+	std::mt19937 gen(rand());
+	std::uniform_int_distribution<>iter(min, max);
+	randomNumber = iter(gen);	
+	return(randomNumber);
+}
+
 void FragTrap::rangedAttack(std::string const &target)
 {
 	const char *str1 = "FR4G-TP < ";
@@ -117,11 +128,11 @@ void FragTrap::rangedAttack(std::string const &target)
 	const char *str4 = " > points of damage";
 	const char *str5 = " cannot take anymore damage.";
 
-	if(_maxEnergyPoints > 100)
-		_maxEnergyPoints = 0;
-	if(_maxEnergyPoints == 0)
+	if(_maxHitPoints > 100)
+		_maxHitPoints = 0;
+	if(_maxHitPoints == 0)
 		std::cout << "Target " << target << str5 << std::endl;
-	else if(_maxEnergyPoints > 0)
+	else if(_maxHitPoints > 0)
 	{
 		std::cout << str1 <<  _playerName << str2 << target;
 		std::cout << str3 << _rangedAttackDamage << str4 << std::endl;
@@ -136,11 +147,11 @@ void FragTrap::meleeAttack(std:: string const &target)
 	const char *str4 = " > points of damage";
 	const char *str5 = " cannot take anymore damage.";
 
-	if(_maxEnergyPoints > 100)
-		_maxEnergyPoints = 0;	
-	if(_maxEnergyPoints == 0)
+	if(_maxHitPoints > 100)
+		_maxHitPoints = 0;	
+	if(_maxHitPoints == 0)
 		std::cout << "Player " << _playerName << str5 << std::endl;
-	else if(_maxEnergyPoints > 0)
+	else if(_maxHitPoints > 0)
 	{
 		std::cout << str1 <<  _playerName << str2 << target;
 		std::cout << str3 << _meleeAttackDamage << str4 << std::endl;
@@ -156,18 +167,18 @@ void FragTrap::takeDamage(unsigned int amount)
 	const char *str5 = "Armor remaining ";
 	const char *str6 = "Target cannot take anymore damage.";
 
-	if(_maxEnergyPoints == 0)
+	if(_maxHitPoints == 0)
 		std::cout << str6 << std::endl;
-	else if(_maxEnergyPoints > 0)
+	else if(_maxHitPoints > 0)
 	{
 		std::cout << str1 <<  _playerName << str2 << amount << str3 << std::endl;	
 		if(_armorDamageReduction > 0)
 			_armorDamageReduction--;
 		else if(_armorDamageReduction == 0)
-			_maxEnergyPoints = _maxEnergyPoints - amount;
-		if(_maxEnergyPoints > 100)
-			_maxEnergyPoints = 0;
-		std::cout << str4 << _maxEnergyPoints << std::endl;
+			_maxHitPoints = _maxHitPoints - amount;
+		if(_maxHitPoints > 100)
+			_maxHitPoints = 0;
+		std::cout << str4 << _maxHitPoints << std::endl;
 		std::cout << str5 << _armorDamageReduction << std::endl;
 	}
 
@@ -177,14 +188,39 @@ void FragTrap::beRepaired(unsigned int amount)
 {
 	const char *str1 = "FR4G-TP < ";
 	const char *str2 = " > energy recoved by < ";
-	const char *str3 = " > points";
+	const char *str3 = " > points. Oh yeah!!!!";
 	const char *str4 = "New energy < ";
 
-	_maxEnergyPoints = _maxEnergyPoints + amount;
-	if(_maxEnergyPoints > 100)
-		_maxEnergyPoints = 100;
+	_maxHitPoints = _maxHitPoints + amount;
+	if(_maxHitPoints > 100)
+		_maxHitPoints = 100;
 	std::cout << str1 << _playerName << str2 << amount << str3 << std::endl;
-	std::cout << str4 << _maxEnergyPoints << str3 << std::endl;
+	std::cout << str4 << _maxHitPoints << str3 << std::endl;
+}
+
+void FragTrap::vaulthunter_dot_exe(std::string const &target)
+{
+	int i = randomNumberGenerator(0, 5);
+	const char *atk1 = "hadokinnnnnnnnnnn>";
+	const char *atk2 = "sharokinnnnnnnnnn>";
+	const char *atk3 = "yoga snooooooowww>";
+	const char *atk4 = "kamahamahaaaaaaaa>";
+	const char *atk5 = "thunderrrrrrrrrrr>";
+	const char *atk6 = "freezeeeeeeeeeeee>";
+	const char *attacks[] = {atk1, atk2, atk3, atk4, atk5, atk6};
+	const char *str1 = "FR4G-TP <";
+	const char *str2 = "> attacks target <";
+	const char *str3 = "> with Special attack: <";
+	
+	if(_maxEnergyPoints >= 25)
+	{
+		std::cout << str1 << _playerName << str2 << target <<  str3;
+		std::cout << attacks[i] << std::endl;
+		_maxEnergyPoints = _maxEnergyPoints - 25;
+	}
+	else if (_maxEnergyPoints == 0)
+		std::cout << "Cannot use special attack anymore" << std::endl;
+
 }
 
 int main(void)
@@ -205,14 +241,20 @@ int main(void)
 	std::cout << fp.getMaxEnergyPoints() << std::endl;
 
 	fp.takeDamage(20);
+	fp.takeDamage(20);
+	fp.takeDamage(20);
+	fp.takeDamage(20);
+	fp.takeDamage(20);
+	fp.takeDamage(20);
+	fp.takeDamage(20);
+	fp.takeDamage(20);
+	fp.beRepaired(20);
+	fp.beRepaired(20);
+	fp.vaulthunter_dot_exe("Thomas");
+	fp.vaulthunter_dot_exe("Thomas");
+	fp.vaulthunter_dot_exe("Thomas");
+	fp.vaulthunter_dot_exe("Thomas");
+	fp.vaulthunter_dot_exe("Thomas");
+	fp.vaulthunter_dot_exe("Thomas");
 
-	fp.takeDamage(20);
-	fp.takeDamage(20);
-	fp.takeDamage(20);
-	fp.takeDamage(20);
-	fp.takeDamage(20);
-	fp.takeDamage(20);
-	fp.takeDamage(20);
-	fp.beRepaired(20);
-	fp.beRepaired(20);
 }

@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 09:54:55 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/17 11:57:53 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/17 14:53:05 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 #include <string>
 #include <iostream>
+//#include <cstdlib>
+//#include <ctime>
+#include <random>
 
 class FragTrap
 {
@@ -27,14 +30,15 @@ class FragTrap
 	
 		// My own member functions / getters to output the value
 		std::string getPlayerName(void) const;
-		unsigned int getHitPoints(void) const;
-		unsigned int getMaxHitPoints(void) const;
-		unsigned int getEnergyPoints(void) const;
-		unsigned int getMaxEnergyPoints(void) const;
-		unsigned int getLevel(void) const;
-		unsigned int getMeleeAttackDamage(void) const;
-		unsigned int getRangedAttackDamage(void) const;
-		unsigned int getArmorDamageReduction(void) const;
+		unsigned int	getHitPoints(void) const;
+		unsigned int	getMaxHitPoints(void) const;
+		unsigned int	getEnergyPoints(void) const;
+		unsigned int	getMaxEnergyPoints(void) const;
+		unsigned int	getLevel(void) const;
+		unsigned int	getMeleeAttackDamage(void) const;
+		unsigned int	getRangedAttackDamage(void) const;
+		unsigned int	getArmorDamageReduction(void) const;
+		int 			randomNumberGenerator(int min, int max);
 
 		// member functions
 		void rangedAttack(std::string const &target);
@@ -45,15 +49,16 @@ class FragTrap
 
 	
 	private:
-		std::string	 _playerName;
-		unsigned int _hitPoints;
-		unsigned int _maxHitPoints;
-		unsigned int _energyPoints;
-		unsigned int _maxEnergyPoints;
-		unsigned int _level;
-		unsigned int _meleeAttackDamage;
-		unsigned int _rangedAttackDamage;
-		unsigned int _armorDamageReduction;
+		std::string		_playerName;
+		unsigned int	_hitPoints;
+		unsigned int	_maxHitPoints;
+		unsigned int	_energyPoints;
+		unsigned int	_maxEnergyPoints;
+		unsigned int	_level;
+		unsigned int	_meleeAttackDamage;
+		unsigned int	_rangedAttackDamage;
+		unsigned int	_armorDamageReduction;
+		int				_randomNumber;
 
 };
 
