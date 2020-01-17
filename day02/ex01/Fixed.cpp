@@ -6,18 +6,19 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 12:58:04 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/16 16:35:14 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/16 19:16:44 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-const int Fixed::_fixedPointFraction = 8;
+const int	Fixed::_fixedPointFraction = 8;
 
-Fixed::Fixed(void) : _fixedPointInteger(0)
+Fixed::Fixed(void) : _fixedPointInteger(0) 
 {
 	const char *s = "Default constructor called to set _fixedPointInteger to 0";
-
+	
+	isInt = false;
 	std::cout << s << std::endl;
 	return;
 }
@@ -38,13 +39,17 @@ Fixed::Fixed(const Fixed &src)
 
 Fixed::Fixed(const int fixedPointInteger)
 {
+	std::cout << "Int constructor called" << std::endl;
+	isInt = true;
 	_fixedPointInteger = fixedPointInteger << _fixedPointFraction;
 }
 
 
 Fixed::Fixed(const float fixedPointInteger)
 {
-
+	std::cout << "Float constructor called" << std::endl;
+	isInt = false;
+	_fixedPointInteger = roundf(fixedPointInteger * (1 << _fixedPointFraction));
 }
 
 
@@ -77,9 +82,8 @@ int Fixed::getRawBits(void) const
 
 float Fixed::toFloat(void) const
 {
-	std::cout << "Calling toFloat member function." << std::endl;
-
-	return(0.0);
+	std::cout << "Calling to Float member function." << std::endl;
+	return((float)_fixedPointInteger / (1 << _fixedPointFraction));
 }
 
 /*
@@ -93,24 +97,32 @@ float Fixed::toFloat(void) const
 
 int Fixed::toInt(void) const
 {
-	std::cout << "Calling toInt member function." << std::endl;
-
+	std::cout << "Return of Int:" << std::endl;
 	return(_fixedPointInteger >> _fixedPointFraction);
+}
+
+bool Fixed::isIntGetter(void) const
+{
+	return(isInt);
 }
 
 std::ostream &operator<<(std::ostream &output, const Fixed &i)
 {
-	output << "The value of integer: " << i.toInt();
-
+	if(i.isIntGetter() == true)
+	{
+		std::cout << "Enters int" << std::endl;
+		output << i.toInt();
+	}
+	else if(i.isIntGetter() == false)
+	{
+		std::cout << "Enters float" << std::endl;
+		output << i.toFloat();
+	}
 	return(output);
 }
 
 int main(void)
 {
-	Fixed a(42);	
-	std::cout << a.toInt() << std::endl << std::endl;
-	
-	std::cout << a << std::endl;
-//	Fixed b(42.2f);
-//	std::cout << b.toFloat() << std::endl;
+	Fixed a;
+
 }

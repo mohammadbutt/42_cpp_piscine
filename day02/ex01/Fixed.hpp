@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 12:57:11 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/16 16:35:51 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/16 19:16:28 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <typeinfo>
 
 class Fixed
 {
@@ -30,11 +31,12 @@ class Fixed
 		int		getRawBits(void) const; // returns raw value of _fixedPointInteger
 		float	toFloat(void) const; // Converts fixed point value to floating point
 		int 	toInt(void) const; // Converts fixed point value to integer.
-
+		bool	isIntGetter(void) const;
+		bool	isInt;
 
 	private:
-		int _fixedPointInteger;
-		static const int _fixedPointFraction;
+		int					_fixedPointInteger;
+		static const int	_fixedPointFraction;
 };
 
 std::ostream &operator<<(std::ostream &output, const Fixed &i);
