@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 10:05:36 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/17 12:38:40 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/17 13:32:52 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,17 +117,14 @@ void FragTrap::rangedAttack(std::string const &target)
 	const char *str4 = " > points of damage";
 	const char *str5 = " cannot take anymore damage.";
 
-	if(_maxEnergyPoints > 100 || _maxEnergyPoints== 0)
-	{
-		
+	if(_maxEnergyPoints > 100)
 		_maxEnergyPoints = 0;
-		std::cout << "Player " << _playerName << str5 << std::endl;
-	}
+	if(_maxEnergyPoints == 0)
+		std::cout << "Target " << target << str5 << std::endl;
 	else if(_maxEnergyPoints > 0)
 	{
 		std::cout << str1 <<  _playerName << str2 << target;
 		std::cout << str3 << _rangedAttackDamage << str4 << std::endl;
-		_maxEnergyPoints = _maxEnergyPoints - _rangedAttackDamage;
 	}
 }
 
@@ -139,20 +136,56 @@ void FragTrap::meleeAttack(std:: string const &target)
 	const char *str4 = " > points of damage";
 	const char *str5 = " cannot take anymore damage.";
 
-
-	if(_maxEnergyPoints > 100 || _maxEnergyPoints == 0)
-	{
-		_maxEnergyPoints = 0;
+	if(_maxEnergyPoints > 100)
+		_maxEnergyPoints = 0;	
+	if(_maxEnergyPoints == 0)
 		std::cout << "Player " << _playerName << str5 << std::endl;
-	}
 	else if(_maxEnergyPoints > 0)
 	{
 		std::cout << str1 <<  _playerName << str2 << target;
 		std::cout << str3 << _meleeAttackDamage << str4 << std::endl;
-		_maxEnergyPoints = _maxEnergyPoints - _meleeAttackDamage;
 	}
 }
 
+void FragTrap::takeDamage(unsigned int amount)
+{
+	const char *str1 = "FR4G-TP < ";
+	const char *str2 = " > attacks target cauing < ";
+	const char *str3 = " > points of damage";
+	const char *str4 = "Energy remaining ";
+	const char *str5 = "Armor remaining ";
+	const char *str6 = "Target cannot take anymore damage.";
+
+	if(_maxEnergyPoints == 0)
+		std::cout << str6 << std::endl;
+	else if(_maxEnergyPoints > 0)
+	{
+		std::cout << str1 <<  _playerName << str2 << amount << str3 << std::endl;	
+		if(_armorDamageReduction > 0)
+			_armorDamageReduction--;
+		else if(_armorDamageReduction == 0)
+			_maxEnergyPoints = _maxEnergyPoints - amount;
+		if(_maxEnergyPoints > 100)
+			_maxEnergyPoints = 0;
+		std::cout << str4 << _maxEnergyPoints << std::endl;
+		std::cout << str5 << _armorDamageReduction << std::endl;
+	}
+
+}
+
+void FragTrap::beRepaired(unsigned int amount)
+{
+	const char *str1 = "FR4G-TP < ";
+	const char *str2 = " > energy recoved by < ";
+	const char *str3 = " > points";
+	const char *str4 = "New energy < ";
+
+	_maxEnergyPoints = _maxEnergyPoints + amount;
+	if(_maxEnergyPoints > 100)
+		_maxEnergyPoints = 100;
+	std::cout << str1 << _playerName << str2 << amount << str3 << std::endl;
+	std::cout << str4 << _maxEnergyPoints << str3 << std::endl;
+}
 
 int main(void)
 {
@@ -170,4 +203,16 @@ int main(void)
 	std::cout << fp.getMaxEnergyPoints() << std::endl;
 	fp.meleeAttack("John");
 	std::cout << fp.getMaxEnergyPoints() << std::endl;
+
+	fp.takeDamage(20);
+
+	fp.takeDamage(20);
+	fp.takeDamage(20);
+	fp.takeDamage(20);
+	fp.takeDamage(20);
+	fp.takeDamage(20);
+	fp.takeDamage(20);
+	fp.takeDamage(20);
+	fp.beRepaired(20);
+	fp.beRepaired(20);
 }
