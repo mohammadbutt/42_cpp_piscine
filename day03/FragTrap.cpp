@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 10:05:36 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/17 12:31:12 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/17 12:38:40 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,15 +117,18 @@ void FragTrap::rangedAttack(std::string const &target)
 	const char *str4 = " > points of damage";
 	const char *str5 = " cannot take anymore damage.";
 
-	if(_maxEnergyPoints > 0)
+	if(_maxEnergyPoints > 100 || _maxEnergyPoints== 0)
+	{
+		
+		_maxEnergyPoints = 0;
+		std::cout << "Player " << _playerName << str5 << std::endl;
+	}
+	else if(_maxEnergyPoints > 0)
 	{
 		std::cout << str1 <<  _playerName << str2 << target;
 		std::cout << str3 << _rangedAttackDamage << str4 << std::endl;
 		_maxEnergyPoints = _maxEnergyPoints - _rangedAttackDamage;
 	}
-	else if(_maxEnergyPoints == 0)
-		std::cout << "Player " << _playerName << str5 << std::endl;
-
 }
 
 void FragTrap::meleeAttack(std:: string const &target)
@@ -136,15 +139,18 @@ void FragTrap::meleeAttack(std:: string const &target)
 	const char *str4 = " > points of damage";
 	const char *str5 = " cannot take anymore damage.";
 
-	if(_maxEnergyPoints > 0)
+
+	if(_maxEnergyPoints > 100 || _maxEnergyPoints == 0)
+	{
+		_maxEnergyPoints = 0;
+		std::cout << "Player " << _playerName << str5 << std::endl;
+	}
+	else if(_maxEnergyPoints > 0)
 	{
 		std::cout << str1 <<  _playerName << str2 << target;
 		std::cout << str3 << _meleeAttackDamage << str4 << std::endl;
 		_maxEnergyPoints = _maxEnergyPoints - _meleeAttackDamage;
 	}
-	else if(_maxEnergyPoints == 0)
-		std::cout << "Player " << _playerName << str5 << std::endl;
-
 }
 
 
@@ -162,5 +168,6 @@ int main(void)
 	std::cout << fp.getMaxEnergyPoints() << std::endl;
 	fp.meleeAttack("John");
 	std::cout << fp.getMaxEnergyPoints() << std::endl;
-
+	fp.meleeAttack("John");
+	std::cout << fp.getMaxEnergyPoints() << std::endl;
 }
