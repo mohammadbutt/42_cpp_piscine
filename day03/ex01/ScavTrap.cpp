@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 15:04:16 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/17 15:28:21 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/17 15:49:26 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,19 @@ ScavTrap::ScavTrap(std::string const playerName)
 	_rangedAttackDamage = 15;
 	_armorDamageReduction = 3;
 
-	std::cout << "Summoning player: " << _playerName << std::endl;
+	std::cout << "[ScavTrap] Summoning player: " << _playerName << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &srcCopy)
 {
-	std::cout << "Calling copy player" << std::endl;
+	std::cout << "[ScavTrap] Calling copy player" << std::endl;
 	*this = srcCopy;
 }
 
 ScavTrap &ScavTrap::operator = (const ScavTrap &rhs)
 {
 
-	std::cout << "Calling = operator player for ";
+	std::cout << "[ScavTrap] Calling = operator player for ";
 	std::cout << _playerName << " and " << rhs.getPlayerName();
 
 	std::cout << std::endl;
@@ -55,13 +55,13 @@ ScavTrap &ScavTrap::operator = (const ScavTrap &rhs)
 	_rangedAttackDamage = rhs.getRangedAttackDamage();
 	_armorDamageReduction = rhs.getArmorDamageReduction();
 
-	std::cout << "Player 1 becomes " << _playerName << std::endl;
+	std::cout << "[ScavTrap] Player 1 becomes " << _playerName << std::endl;
 	return(*this);
 }
 
 ScavTrap::~ScavTrap(void)
 {
-	std::cout << "Calling destructor" << std::endl;
+	std::cout << "[ScavTrap] Calling destructor" << std::endl;
 }
 // Getter functions
 std::string ScavTrap::getPlayerName(void) const
@@ -121,7 +121,7 @@ int ScavTrap::randomNumberGenerator(int min, int max)
 
 void ScavTrap::rangedAttack(std::string const &target)
 {
-	const char *str1 = "FR4G-TP < ";
+	const char *str1 = "[ScavTrap] < ";
 	const char *str2 = " > attacks < ";
 	const char *str3 = " > with rangedAttack, causing < ";
 	const char *str4 = " > points of damage";
@@ -140,7 +140,7 @@ void ScavTrap::rangedAttack(std::string const &target)
 
 void ScavTrap::meleeAttack(std:: string const &target)
 {
-	const char *str1 = "FR4G-TP < ";
+	const char *str1 = "[ScavTrap] < ";
 	const char *str2 = " > attacks < ";
 	const char *str3 = " > with meleeAttack, causing < ";
 	const char *str4 = " > points of damage";
@@ -159,11 +159,11 @@ void ScavTrap::meleeAttack(std:: string const &target)
 
 void ScavTrap::takeDamage(unsigned int amount)
 {
-	const char *str1 = "FR4G-TP < ";
+	const char *str1 = "[ScavTrap] < ";
 	const char *str2 = " > attacks target cauing < ";
 	const char *str3 = " > points of damage";
-	const char *str4 = "Energy remaining ";
-	const char *str5 = "Armor remaining ";
+	const char *str4 = "[ScavTrap] Energy remaining ";
+	const char *str5 = "[ScavTrap] Armor remaining ";
 	const char *str6 = "Target cannot take anymore damage.";
 
 	if(_maxHitPoints == 0)
@@ -185,10 +185,10 @@ void ScavTrap::takeDamage(unsigned int amount)
 
 void ScavTrap::beRepaired(unsigned int amount)
 {
-	const char *str1 = "FR4G-TP < ";
+	const char *str1 = "[ScavTrap] < ";
 	const char *str2 = " > energy recoved by < ";
 	const char *str3 = " > points. Oh yeah!!!!";
-	const char *str4 = "New energy < ";
+	const char *str4 = "[ScavTrap] New energy < ";
 
 	_maxHitPoints = _maxHitPoints + amount;
 	if(_maxHitPoints > 100)
@@ -207,7 +207,7 @@ void ScavTrap::challengeNewComer(std::string const &target)
 	const char *chal5 = "> to <Run 10 miles in one hour>";
 	const char *chal6 = "> to <Make a website in C programming language>";
 	const char *challenge[] = {chal1, chal2, chal3, chal4, chal5, chal6};
-	const char *str1 = "FR4G-TP <";
+	const char *str1 = "[ScrapTap] <";
 	const char *str2 = "> challenges opponent <";
 
 //	if(_maxEnergyPoints >= 25)
