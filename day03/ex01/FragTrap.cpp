@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 10:05:36 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/17 15:00:55 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/17 16:05:09 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,19 @@ FragTrap::FragTrap(std::string const playerName)
 	_rangedAttackDamage = 20;
 	_armorDamageReduction = 5;
 
-	std::cout << "Summoning player: " << _playerName << std::endl;
+	std::cout << "[FragTrap] Summoning player: " << _playerName << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &srcCopy)
 {
-	std::cout << "Calling copy player" << std::endl;
+	std::cout << "[FragTrap] Calling copy player" << std::endl;
 	*this = srcCopy;
 }
 
 FragTrap &FragTrap::operator = (const FragTrap &rhs)
 {
 
-	std::cout << "Calling = operator player for ";
+	std::cout << "[FragTrap] Calling = operator player for ";
 	std::cout << _playerName << " and " << rhs.getPlayerName();
 
 	std::cout << std::endl;
@@ -55,13 +55,13 @@ FragTrap &FragTrap::operator = (const FragTrap &rhs)
 	_rangedAttackDamage = rhs.getRangedAttackDamage();
 	_armorDamageReduction = rhs.getArmorDamageReduction();
 
-	std::cout << "Player 1 becomes " << _playerName << std::endl;
+	std::cout << "[FragTrap] Player 1 becomes " << _playerName << std::endl;
 	return(*this);
 }
 
 FragTrap::~FragTrap(void)
 {
-	std::cout << "Calling destructor" << std::endl;
+	std::cout << "[FragTrap] Calling destructor" << std::endl;
 }
 // Getter functions
 std::string FragTrap::getPlayerName(void) const
@@ -121,7 +121,7 @@ int FragTrap::randomNumberGenerator(int min, int max)
 
 void FragTrap::rangedAttack(std::string const &target)
 {
-	const char *str1 = "FR4G-TP < ";
+	const char *str1 = "[FragTrap] < ";
 	const char *str2 = " > attacks < ";
 	const char *str3 = " > with rangedAttack, causing < ";
 	const char *str4 = " > points of damage";
@@ -140,7 +140,7 @@ void FragTrap::rangedAttack(std::string const &target)
 
 void FragTrap::meleeAttack(std:: string const &target)
 {
-	const char *str1 = "FR4G-TP < ";
+	const char *str1 = "[FragTrap] < ";
 	const char *str2 = " > attacks < ";
 	const char *str3 = " > with meleeAttack, causing < ";
 	const char *str4 = " > points of damage";
@@ -159,11 +159,11 @@ void FragTrap::meleeAttack(std:: string const &target)
 
 void FragTrap::takeDamage(unsigned int amount)
 {
-	const char *str1 = "FR4G-TP < ";
+	const char *str1 = "[FragTrap] < ";
 	const char *str2 = " > attacks target cauing < ";
 	const char *str3 = " > points of damage";
-	const char *str4 = "Energy remaining ";
-	const char *str5 = "Armor remaining ";
+	const char *str4 = "[FragTrap] Energy remaining ";
+	const char *str5 = "[FrapTrap] Armor remaining ";
 	const char *str6 = "Target cannot take anymore damage.";
 
 	if(_maxHitPoints == 0)
@@ -185,10 +185,10 @@ void FragTrap::takeDamage(unsigned int amount)
 
 void FragTrap::beRepaired(unsigned int amount)
 {
-	const char *str1 = "FR4G-TP < ";
+	const char *str1 = "[FragTrap] < ";
 	const char *str2 = " > energy recoved by < ";
 	const char *str3 = " > points. Oh yeah!!!!";
-	const char *str4 = "New energy < ";
+	const char *str4 = "[FragTrap] New energy < ";
 
 	_maxHitPoints = _maxHitPoints + amount;
 	if(_maxHitPoints > 100)
@@ -207,7 +207,7 @@ void FragTrap::vaulthunter_dot_exe(std::string const &target)
 	const char *atk5 = "thunderrrrrrrrrrr>";
 	const char *atk6 = "freezeeeeeeeeeeee>";
 	const char *attacks[] = {atk1, atk2, atk3, atk4, atk5, atk6};
-	const char *str1 = "FR4G-TP <";
+	const char *str1 = "[FragTrap] <";
 	const char *str2 = "> attacks target <";
 	const char *str3 = "> with Special attack: <";
 	

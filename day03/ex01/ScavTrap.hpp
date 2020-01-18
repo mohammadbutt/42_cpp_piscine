@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 15:03:13 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/17 15:13:04 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/17 16:06:42 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ class ScavTrap
 		void meleeAttack(std::string const &target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
-//		void vaulthunter_dot_exe(std::string const &target);
 		void challengeNewComer(std:: string const &target);
 		int  randomNumberGenerator(int min, int max);
 	
