@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:55:08 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/17 19:44:58 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/17 20:05:28 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 #include "ScavTrap.hpp"
 #include "ClapTrap.hpp"
 
+/*
+** Since FragTrap and ScavTrap inherited ClapTrap class, we can use any of the
+** public and protected members of the ClapTrap class.
+**
+** FragTrap and ScavTrap will not have access to private members of ClapTrap
+** class.
+*/
+
 int main(void)
 {
-//	FragTrap fp("Steve");	
-//	FragTrap equalPlayer(FragTrap("Player 1") = FragTrap("Player 2"));
 	const char *str1 = "[FragTrap] max heallth: ";
 	FragTrap ft("Steve");
 	FragTrap equalPlayer1(FragTrap("Player 1") = FragTrap("Player 2"));

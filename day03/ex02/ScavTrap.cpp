@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 15:04:16 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/17 19:52:28 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/17 20:05:32 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,151 +63,14 @@ ScavTrap::~ScavTrap(void)
 {
 	std::cout << "[ScavTrap] Calling destructor" << std::endl;
 }
+
 /*
 ** Getter functions
 ** Since we are inheriting ClapTrap class, we will not explicitly type any of
-** the getter functions in ScavTrap. We will just inherit these and other
-** functions we need from ClapTrap.
+** the getter and attack functions in ScavTrap. We will just inherit these and
+** other functions we need from ClapTrap.
 */
 
-/*
-std::string ScavTrap::getPlayerName(void) const
-{
-	return(_playerName);
-}
-
-unsigned int ScavTrap::getHitPoints(void) const
-{
-	return(_hitPoints);
-}
-
-unsigned int ScavTrap::getMaxHitPoints(void) const
-{
-	return(_maxHitPoints);
-}
-
-unsigned int ScavTrap::getEnergyPoints(void) const
-{
-	return(_energyPoints);
-}
-
-unsigned int ScavTrap::getMaxEnergyPoints(void) const
-{
-	return(_maxEnergyPoints);
-}
-
-unsigned int ScavTrap::getLevel(void) const
-{
-	return(_level);
-}
-
-unsigned int ScavTrap::getMeleeAttackDamage(void) const
-{
-	return(_meleeAttackDamage);
-}
-
-unsigned int ScavTrap::getRangedAttackDamage(void) const
-{
-	return(_rangedAttackDamage);
-}
-
-unsigned int ScavTrap::getArmorDamageReduction(void) const
-{
-	return(_armorDamageReduction);
-}
-*/
-
-/*
-int ScavTrap::randomNumberGenerator(int min, int max)
-{
-	int randomNumber = 0;
-	std::random_device rand;
-	std::mt19937 gen(rand());
-	std::uniform_int_distribution<>iter(min, max);
-	randomNumber = iter(gen);	
-	return(randomNumber);
-}
-
-void ScavTrap::rangedAttack(std::string const &target)
-{
-	const char *str1 = "[ScavTrap] < ";
-	const char *str2 = " > attacks < ";
-	const char *str3 = " > with rangedAttack, causing < ";
-	const char *str4 = " > points of damage";
-	const char *str5 = " cannot take anymore damage.";
-
-	if(_maxHitPoints > 100)
-		_maxHitPoints = 0;
-	if(_maxHitPoints == 0)
-		std::cout << "Target " << target << str5 << std::endl;
-	else if(_maxHitPoints > 0)
-	{
-		std::cout << str1 <<  _playerName << str2 << target;
-		std::cout << str3 << _rangedAttackDamage << str4 << std::endl;
-	}
-}
-
-void ScavTrap::meleeAttack(std:: string const &target)
-{
-	const char *str1 = "[ScavTrap] < ";
-	const char *str2 = " > attacks < ";
-	const char *str3 = " > with meleeAttack, causing < ";
-	const char *str4 = " > points of damage";
-	const char *str5 = " cannot take anymore damage.";
-
-	if(_maxHitPoints > 100)
-		_maxHitPoints = 0;	
-	if(_maxHitPoints == 0)
-		std::cout << "Player " << _playerName << str5 << std::endl;
-	else if(_maxHitPoints > 0)
-	{
-		std::cout << str1 <<  _playerName << str2 << target;
-		std::cout << str3 << _meleeAttackDamage << str4 << std::endl;
-	}
-}
-*/
-
-/*
-void ScavTrap::takeDamage(unsigned int amount)
-{
-	const char *str1 = "[ScavTrap] < ";
-	const char *str2 = " > attacks target cauing < ";
-	const char *str3 = " > points of damage";
-	const char *str4 = "[ScavTrap] Energy remaining ";
-	const char *str5 = "[ScavTrap] Armor remaining ";
-	const char *str6 = "Target cannot take anymore damage.";
-
-	if(_maxHitPoints == 0)
-		std::cout << str6 << std::endl;
-	else if(_maxHitPoints > 0)
-	{
-		std::cout << str1 <<  _playerName << str2 << amount << str3 << std::endl;	
-		if(_armorDamageReduction > 0)
-			_armorDamageReduction--;
-		else if(_armorDamageReduction == 0)
-			_maxHitPoints = _maxHitPoints - amount;
-		if(_maxHitPoints > 100)
-			_maxHitPoints = 0;
-		std::cout << str4 << _maxHitPoints << std::endl;
-		std::cout << str5 << _armorDamageReduction << std::endl;
-	}
-
-}
-
-void ScavTrap::beRepaired(unsigned int amount)
-{
-	const char *str1 = "[ScavTrap] < ";
-	const char *str2 = " > energy recoved by < ";
-	const char *str3 = " > points. Oh yeah!!!!";
-	const char *str4 = "[ScavTrap] New energy < ";
-
-	_maxHitPoints = _maxHitPoints + amount;
-	if(_maxHitPoints > 100)
-		_maxHitPoints = 100;
-	std::cout << str1 << _playerName << str2 << amount << str3 << std::endl;
-	std::cout << str4 << _maxHitPoints << str3 << std::endl;
-}
-*/
 void ScavTrap::challengeNewComer(std::string const &target)
 {
 	int i = randomNumberGenerator(0, 5);
@@ -221,5 +84,6 @@ void ScavTrap::challengeNewComer(std::string const &target)
 	const char *str1 = "[ScavTrap] <";
 	const char *str2 = "> challenges opponent <";
 
-	std::cout << str1 << _playerName << str2 << target << challenge[i] << std::endl;
+	std::cout << str1 << _playerName << str2 << target << challenge[i];
+	std::cout << std::endl;
 }

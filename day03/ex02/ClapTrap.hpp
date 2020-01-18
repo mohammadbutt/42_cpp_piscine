@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 19:18:33 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/17 19:51:37 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/17 20:05:36 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ class ClapTrap
 		void meleeAttack(std::string const &target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
-//		void challengeNewComer(std:: string const &target);
 		int  randomNumberGenerator(int min, int max);
 
 	protected:
