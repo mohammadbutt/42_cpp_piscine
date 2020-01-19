@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 19:15:07 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/19 13:10:05 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/19 14:15:01 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <string>
 #include <ncurses.h>
 #include <unistd.h>
+
+# define ESCAPE_KEY 27
 
 class Player
 {

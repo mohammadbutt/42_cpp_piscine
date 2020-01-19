@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 19:21:11 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/19 13:10:02 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/19 14:17:15 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ Player::Player(WINDOW *win, int y, int x, char c)
 	_yLocal = y;
 	_xLocal = x;
 	getmaxyx(_currentWindow, _yMax, _xMax);
-	keypad(_currentWindow, true);
-	nodelay(_currentWindow, true);
+	keypad(_currentWindow, TRUE);
+	nodelay(_currentWindow, TRUE);
 	_character = c;
 }
 
@@ -108,8 +108,8 @@ int Player::getMove(void)
 		moveLeft();
 	else if(userPressedKey == KEY_RIGHT)
 		moveRight();
-	else if(userPressedKey == ' ')
-		releaseBullet();
+//	else if(userPressedKey == ' ')
+//		releaseBullet();
 	return(userPressedKey);
 }
 
@@ -118,25 +118,26 @@ void  Player::releaseBullet(void)
 {
 	int xBullet;
 	int yBullet;
-
+	
 	xBullet = _xLocal;
 	yBullet = _yLocal;
 	while(true)
 	{
-
-//		getMove();
 		if((xBullet + 2) == _xMax)
 		{			
 			mvprintw(yBullet, xBullet, " ");
 			break;
 		}
+//		if((xBullet + 3) != _xMax)
+//			mvprintw(yBullet, xBullet + 1, "-");
+//		mvprintw(yBullet, xBullet, " ");	
+
 		if((xBullet + 3) != _xMax)
-			mvprintw(yBullet, xBullet + 1, "-");
-		mvprintw(yBullet, xBullet, " ");
-		refresh();
-//		usleep(3000);
+			mvaddch(yBullet, xBullet + 1, '-');
+		mvaddch(yBullet, xBullet, ' ');
 		usleep(30000);
 		xBullet++;
+		refresh();
 	}
 }
 
@@ -153,10 +154,11 @@ int main(int argc, char *argv[])
 //	WINDOW *win;
 
 	initscr();
+	raw();
 	noecho();
 	cbreak();
-	curs_set(false);
-	nodelay(stdscr, TRUE);
+	curs_set(0);
+	nodelay(stdscr, true);
 	
 	// get screen size
 	int yMax;
@@ -174,18 +176,17 @@ int main(int argc, char *argv[])
 
 // Call the playership below
 	Player *player = new Player(playwin, 1, 1, '>');
-//	while(player->getMove() != 27)
-//	{
-//		player->display();
-//		wrefresh(playwin);
-//	} 
+	int userInput;
+
+	userInput = 0;
+	
 	while(true)
 	{
-
-		if(player->getMove() == 27)
+		userInput = player->getMove();
+		if(userInput == ESCAPE_KEY)
 			break;
-//		player->getBullet();
-
+		else if(userInput == ' ')
+			player->releaseBullet();
 		player->display();
 		wrefresh(playwin);
 	}
