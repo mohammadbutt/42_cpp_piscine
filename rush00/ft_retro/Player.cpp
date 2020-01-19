@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 19:21:11 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/18 22:10:04 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/18 22:47:11 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ void Player::moveRight(void)
 
 int Player::getMove(void)
 {
+//	WINDOW *bulletwin = newwin(0, 0, 0, 0);
+//	Player *bullet = new Player(bulletwin, _yLocal, _xLocal, '-');
 	int userPressedKey = wgetch(_currentWindow);
 
 	if(userPressedKey == KEY_UP)
@@ -104,8 +106,18 @@ int Player::getMove(void)
 		moveLeft();
 	else if(userPressedKey == KEY_RIGHT)
 		moveRight();
-
+	else if(userPressedKey == ' ')
+		mvwprintw(_currentWindow, _yLocal, _xLocal + 1,  "-");
 	return(userPressedKey);
+}
+
+void  Player::getBullet(void)
+{
+//	int userPressedKey = wgetch(_currentWindow);
+
+//	if(userPressedKey == KEY_F0)
+//		mvwaddch(_currentWindow, _yLocal, _xLocal, '-');
+//	return(0);
 }
 
 void Player::display(void) // render
@@ -151,7 +163,8 @@ int main(int argc, char *argv[])
 
 		if(player->getMove() == 27)
 			break;
-//		if(player->getMove() == ' ')
+		player->getBullet();
+
 		player->display();
 		wrefresh(playwin);
 	}
