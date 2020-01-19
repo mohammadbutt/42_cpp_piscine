@@ -6,14 +6,14 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 11:04:03 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/18 15:08:42 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/18 15:55:30 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ncurses.h>
 
 
-
+/*
 int main(int argc, char *argv[])
 {
 //	init(); // initializes screen;
@@ -21,9 +21,9 @@ int main(int argc, char *argv[])
 	cbreak(); // user will be able to close the program with Ctrl + c
 	noecho(); 	// Will not echo user pressed keys onto screen, but these do get
 				// registered
-	/*
-	** Everything happens between initscr() and endwin()
-	*/
+	
+//	** Everything happens between initscr() and endwin()
+	
 	
 	int x = 10;
 	int y = 10;
@@ -77,5 +77,5 @@ int main(int argc, char *argv[])
 	endwin(); // deallocates memory
 	return(0);
 }
-
+*/
 
