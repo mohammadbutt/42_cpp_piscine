@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 19:21:11 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/19 14:17:15 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/19 15:06:42 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Player::Player(void)
 {
-	std::cout << "Calling default constructor" << std::endl;
+	std::cout << "Calling default constructor for Player class" << std::endl;
 }
 
 /*
@@ -25,7 +25,7 @@ Player::Player(std::string name)
 */
 Player::Player(const Player &srcCopy)
 {
-	std::cout << "Calling copy constructor" << std::endl;
+	std::cout << "Calling copy constructor for Player class" << std::endl;
 	*this = srcCopy;
 }
 
@@ -34,7 +34,7 @@ Player &Player::operator = (const Player &rhs)
 {
 //	_xMax = rhs._xMax;
 //	_yMax = rhs._yMax;
-	std::cout << "Equal operator to set values" << std::endl;
+	std::cout << "Equal operator to set values for Player class" << std::endl;
 	return(*this);
 }
 
