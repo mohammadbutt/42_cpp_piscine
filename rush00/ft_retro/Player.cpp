@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 19:21:11 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/19 10:52:58 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/19 13:10:02 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ Player::Player(WINDOW *win, int y, int x, char c)
 	_xLocal = x;
 	getmaxyx(_currentWindow, _yMax, _xMax);
 	keypad(_currentWindow, true);
+	nodelay(_currentWindow, true);
 	_character = c;
 }
 
@@ -122,6 +123,8 @@ void  Player::releaseBullet(void)
 	yBullet = _yLocal;
 	while(true)
 	{
+
+//		getMove();
 		if((xBullet + 2) == _xMax)
 		{			
 			mvprintw(yBullet, xBullet, " ");
@@ -131,7 +134,8 @@ void  Player::releaseBullet(void)
 			mvprintw(yBullet, xBullet + 1, "-");
 		mvprintw(yBullet, xBullet, " ");
 		refresh();
-		usleep(3000);
+//		usleep(3000);
+		usleep(30000);
 		xBullet++;
 	}
 }
@@ -147,12 +151,13 @@ int main(int argc, char *argv[])
 //	Player player;
 	// starts ncurses
 //	WINDOW *win;
+
 	initscr();
 	noecho();
 	cbreak();
-	curs_set(FALSE);
+	curs_set(false);
 	nodelay(stdscr, TRUE);
-
+	
 	// get screen size
 	int yMax;
 	int xMax;
