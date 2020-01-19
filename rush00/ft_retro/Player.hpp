@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 19:15:07 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/18 21:14:46 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/18 21:58:30 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ class Player
 		void moveRight(void);
 		int getMove(void);
 		void display(void); // render
+		int xLocal;
+		int yLocal;
 	private:
 		int _xLocal;
 		int _yLocal;

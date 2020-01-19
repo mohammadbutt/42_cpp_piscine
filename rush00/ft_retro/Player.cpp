@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 19:21:11 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/18 21:36:52 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/18 22:10:04 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void Player::moveUp(void)
 	mvwaddch(_currentWindow, _yLocal, _xLocal, ' ');
 	if(_yLocal > 1)
 		_yLocal--;
+	yLocal = _yLocal;
+	xLocal = _xLocal;
 }
 
 void Player::moveDown(void)
@@ -68,6 +70,8 @@ void Player::moveDown(void)
 	mvwaddch(_currentWindow, _yLocal, _xLocal, ' ');
 	if((_yLocal + 2) < _yMax)
 		_yLocal++;
+	yLocal = _yLocal;
+	xLocal = _xLocal;
 }
 
 void Player::moveLeft(void)
@@ -75,6 +79,8 @@ void Player::moveLeft(void)
 	mvwaddch(_currentWindow, _yLocal, _xLocal, ' ');
 	if(_xLocal > 1)
 		_xLocal--;
+	yLocal = _yLocal;
+	xLocal = _xLocal;
 }
 
 void Player::moveRight(void)
@@ -82,6 +88,8 @@ void Player::moveRight(void)
 	mvwaddch(_currentWindow, _yLocal, _xLocal, ' ');
 	if((_xLocal + 2) < _xMax)
 		_xLocal++;
+	yLocal = _yLocal;
+	xLocal = _xLocal;
 }
 
 int Player::getMove(void)
@@ -96,11 +104,6 @@ int Player::getMove(void)
 		moveLeft();
 	else if(userPressedKey == KEY_RIGHT)
 		moveRight();
-	else if(userPressedKey == KEY_RIGHT && userPressedKey == KEY_UP)
-	{
-		moveUp();
-		moveRight();
-	}
 
 	return(userPressedKey);
 }
@@ -119,6 +122,8 @@ int main(int argc, char *argv[])
 	initscr();
 	noecho();
 	cbreak();
+	curs_set(0);
+	nodelay(stdscr, TRUE);
 
 	// get screen size
 	int yMax;
@@ -128,19 +133,28 @@ int main(int argc, char *argv[])
 	getmaxyx(stdscr, yMax, xMax);
 
 	// create a windoe for our input
-	WINDOW *playwin = newwin(20, 50, (yMax/2) - 10, 10);	
-//	WINDOW *playwin = newwin(20, 50, yMax - 10, 10);
+//	WINDOW *playwin = newwin(20, 50, (yMax/2) - 10, 10);	
+	WINDOW *playwin = newwin(0, 0, 0, 0);
 	box(playwin, 0, 0);
 	refresh();
 	wrefresh(playwin);
 
 // Call the playership below
 	Player *player = new Player(playwin, 1, 1, '>');
-	while(player->getMove() != 27)
+//	while(player->getMove() != 27)
+//	{
+//		player->display();
+//		wrefresh(playwin);
+//	} 
+	while(true)
 	{
+
+		if(player->getMove() == 27)
+			break;
+//		if(player->getMove() == ' ')
 		player->display();
 		wrefresh(playwin);
-	} 
+	}
 
 // Call the playership above
 
