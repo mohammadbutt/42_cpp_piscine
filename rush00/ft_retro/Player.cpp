@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 19:21:11 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/18 23:02:40 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/19 10:52:58 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,25 @@ int Player::getMove(void)
 
 void  Player::releaseBullet(void)
 {
-	mvwprintw(_currentWindow, _yLocal, _xLocal + 1,  "-");
+	int xBullet;
+	int yBullet;
+
+	xBullet = _xLocal;
+	yBullet = _yLocal;
+	while(true)
+	{
+		if((xBullet + 2) == _xMax)
+		{			
+			mvprintw(yBullet, xBullet, " ");
+			break;
+		}
+		if((xBullet + 3) != _xMax)
+			mvprintw(yBullet, xBullet + 1, "-");
+		mvprintw(yBullet, xBullet, " ");
+		refresh();
+		usleep(3000);
+		xBullet++;
+	}
 }
 
 void Player::display(void) // render
@@ -132,7 +150,7 @@ int main(int argc, char *argv[])
 	initscr();
 	noecho();
 	cbreak();
-	curs_set(0);
+	curs_set(FALSE);
 	nodelay(stdscr, TRUE);
 
 	// get screen size

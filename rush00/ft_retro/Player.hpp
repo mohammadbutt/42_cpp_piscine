@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 19:15:07 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/18 23:02:31 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/19 10:27:26 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <string>
 #include <ncurses.h>
+#include <unistd.h>
 
 class Player
 {
