@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 19:21:11 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/18 22:47:11 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/18 23:02:40 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ Player::Player(const Player &srcCopy)
 	*this = srcCopy;
 }
 
-/*
+
 Player &Player::operator = (const Player &rhs)
 {
-	_xMax = rhs._xMax;
-	_yMax = rhs._yMax;
+//	_xMax = rhs._xMax;
+//	_yMax = rhs._yMax;
 	std::cout << "Equal operator to set values" << std::endl;
 	return(*this);
 }
-*/
+
 Player::~Player(void)
 {
 	std::cout << "Calling desctructor" << std::endl;
@@ -96,6 +96,7 @@ int Player::getMove(void)
 {
 //	WINDOW *bulletwin = newwin(0, 0, 0, 0);
 //	Player *bullet = new Player(bulletwin, _yLocal, _xLocal, '-');
+//	Bullet bullet;
 	int userPressedKey = wgetch(_currentWindow);
 
 	if(userPressedKey == KEY_UP)
@@ -107,17 +108,14 @@ int Player::getMove(void)
 	else if(userPressedKey == KEY_RIGHT)
 		moveRight();
 	else if(userPressedKey == ' ')
-		mvwprintw(_currentWindow, _yLocal, _xLocal + 1,  "-");
+		releaseBullet();
 	return(userPressedKey);
 }
 
-void  Player::getBullet(void)
-{
-//	int userPressedKey = wgetch(_currentWindow);
 
-//	if(userPressedKey == KEY_F0)
-//		mvwaddch(_currentWindow, _yLocal, _xLocal, '-');
-//	return(0);
+void  Player::releaseBullet(void)
+{
+	mvwprintw(_currentWindow, _yLocal, _xLocal + 1,  "-");
 }
 
 void Player::display(void) // render
@@ -163,7 +161,7 @@ int main(int argc, char *argv[])
 
 		if(player->getMove() == 27)
 			break;
-		player->getBullet();
+//		player->getBullet();
 
 		player->display();
 		wrefresh(playwin);

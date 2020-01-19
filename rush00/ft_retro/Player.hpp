@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 19:15:07 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/18 22:21:04 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/18 23:02:31 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Player
 	public:
 		Player(void); // Default constructor - Canonical
 		Player(const Player &srcCopy); // Copy constructor - Canonical
-//		Player &operator = (const Player &rhs); // Operator assignment - Canonical
+		Player &operator = (const Player &rhs); // Operator assignment - Canonical
 		~Player(void); // Default constructor - Canonical
 		Player(WINDOW *win, int y, int x, char c);
 		void moveUp(void);
@@ -30,11 +30,11 @@ class Player
 		void moveLeft(void);
 		void moveRight(void);
 		int getMove(void);
-		void getBullet(void);
+		void releaseBullet(void);
 		void display(void); // render
 		int xLocal;
 		int yLocal;
-	private:
+	protected:
 		int _xLocal;
 		int _yLocal;
 		int _xMax;
@@ -42,7 +42,24 @@ class Player
 		char _character;
 		WINDOW *_currentWindow;
 };
-
-
 # endif
 
+// Above is Player.hpp class
+//
+//  Below is Bullet.hpp class
+/*
+#ifndef BULLET_HPP
+# define BULLET_HPP
+
+class Bullet : public Player
+{
+	public:
+		Bullet(void);
+		Bullet(const Bullet &srcCopy);
+		Bullet &operator = (const Bullet &rhs); // Operator assignment - Canonical
+		~Bullet(void); // Default constructor - Canonical
+//		void releaseBullet(void);
+};
+
+#endif
+*/
