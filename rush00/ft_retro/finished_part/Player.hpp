@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 19:15:07 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/19 15:01:58 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/19 20:36:43 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Player
 		Player(void); // Default constructor - Canonical
 		Player(const Player &srcCopy); // Copy constructor - Canonical
 		Player &operator = (const Player &rhs); // Operator assignment - Canonical
-		~Player(void); // Default constructor - Canonical
+		~Player(void); // Default destructor - Canonical
 		Player(WINDOW *win, int y, int x, char c);
 		void moveUp(void);
 		void moveDown(void);
