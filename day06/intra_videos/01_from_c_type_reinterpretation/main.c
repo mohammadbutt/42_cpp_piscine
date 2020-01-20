@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 13:17:52 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/20 13:22:29 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/20 13:50:25 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,13 @@ int main(void)
 	printf(" %p, %d\n", e, *e);
 	printf(" %p, %d\n", f, *f);
 }
+
+/*
+** Note for line 23:
+** int *e = d
+** If the file extension is cpp then we will get the error message:
+** cannot initialize a variable of type 'int *' with an lvalue
+** of type 'void *'
+**      int *e = d;                             // Implicit demotion
+**           ^   ~
+*/
