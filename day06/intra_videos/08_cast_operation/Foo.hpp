@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cpp_type_of_casts.cpp                              :+:      :+:    :+:   */
+/*   Foo.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/20 16:43:18 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/20 17:10:02 by mbutt            ###   ########.fr       */
+/*   Created: 2020/01/20 18:53:44 by mbutt             #+#    #+#             */
+/*   Updated: 2020/01/20 19:21:35 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FOO_HPP
+# define FOO_HPP
+
 /*
-** C++ has the following 5 types of casts
-** 1. static_cast		- Simplest type of cast.
-** 2. dynamic_cast		- Happens at runtime. One class member has to be virtual
-** 3. reinterpret_cast	- Even if two things are not compatible, it will still cast.
-** 4. const_cast		-
-** 5. cast_operator		- 
-**
+** cast operator
 */
+#include <iostream>
+
+class Foo
+{
+	public:
+		Foo(float const v);
+
+		float getV(void);
+
+		operator float(void);
+		operator int(void);
+	
+	private:
+		float _v;
+};
+
+# endif

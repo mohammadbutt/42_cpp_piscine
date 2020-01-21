@@ -1,21 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cpp_type_of_casts.cpp                              :+:      :+:    :+:   */
+/*   Foo.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/20 16:43:18 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/20 17:10:02 by mbutt            ###   ########.fr       */
+/*   Created: 2020/01/20 18:54:15 by mbutt             #+#    #+#             */
+/*   Updated: 2020/01/20 19:21:28 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** C++ has the following 5 types of casts
-** 1. static_cast		- Simplest type of cast.
-** 2. dynamic_cast		- Happens at runtime. One class member has to be virtual
-** 3. reinterpret_cast	- Even if two things are not compatible, it will still cast.
-** 4. const_cast		-
-** 5. cast_operator		- 
-**
-*/
+#include "Foo.hpp"
+
+Foo::Foo(float const v) : _v(v)
+{
+
+}
+
+float Foo::getV(void)
+{
+	return (this->_v);
+}
+
+Foo::operator float(void)
+{
+	return(this->_v);
+}
+
+Foo::operator int(void)
+{
+	return(static_cast<int>(this->_v));
+}
+
+int main(void)
+{
+	Foo		a(428.024f);
+	float	b = a;
+	int		c = a;
+
+	std::cout << a.getV() << std::endl;
+	std::cout << b << std::endl;
+	std::cout << c << std::endl;
+
+	return(0);
+}
