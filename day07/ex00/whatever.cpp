@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:41:42 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/21 19:23:59 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/21 19:26:39 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int main(void)
 	std::cout << "max( c, d ) = " << ::max<std::string>( c, d ) << std::endl; // Explicit instanciation
 	
 	std::cout << std::endl;
-	std::cout << "-------------Running personal tests-----------" << std::endl;
+	std::cout << "-----Running personal unit tests-----" << std::endl << std::endl;
 	std::cout << "Before swap int: " << std::endl;
 	std::cout << "e =  " << e << ", f = " << f << std::endl;	
 	std::cout << "After swap int: " << std::endl;
