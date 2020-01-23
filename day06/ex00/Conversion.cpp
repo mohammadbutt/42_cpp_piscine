@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 20:04:38 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/20 22:49:50 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/22 21:55:53 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,19 @@ Conversion::Conversion(void)
 
 Conversion::Conversion(std::string userString)
 {
-	try
+	if(userString.length() == 1 && !(userString[0] >= '0' && userString[0] <= '9'))
+		_userNumber = static_cast<double>(userString[0]);
+	else
 	{
-		_userNumber = std::stod(userString);
-	}
-	catch(std::exception &e)
-	{
-		std::cout << "Conversion not possible: "  << e.what()<< std::endl;
-		return;
+		try
+		{
+			_userNumber = std::stod(userString);
+		}
+		catch(std::exception &e)
+		{
+			std::cout << "Conversion not possible: "  << e.what()<< std::endl;
+			return;
+		}
 	}
 	convertToChar();
 	convertToInteger();
