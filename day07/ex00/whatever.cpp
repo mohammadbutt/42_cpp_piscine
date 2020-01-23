@@ -6,11 +6,12 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:41:42 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/21 19:26:39 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/21 19:48:16 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <string>
 
 template <typename universalDataT>
 
