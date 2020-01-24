@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 14:24:16 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/23 21:17:42 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/23 21:19:03 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,6 +209,7 @@ void printAllVectorElements(Span &span)
 	std::cout << std::endl;
 }
 
+/*
 int main(void)
 {
 	int i = 0;
@@ -229,3 +230,4 @@ int main(void)
 	addToSpanTenK(vectorTenK, span3);
 	printLongAndShortSpan1000(span3);
 }
+*/
