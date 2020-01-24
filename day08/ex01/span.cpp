@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 14:24:16 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/23 17:06:43 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/23 20:39:13 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,18 @@ void Span::addNumber(int number)
 long Span::shortestSpan(void)
 {
 	if(_vector.size() <= 1)
-		throw(std::exception());
-
+		throw(std::exception());	
 	int long shortestSpan = LONG_MAX;
 	int long difference = 0;
 	int long leftNumber = 0;
 	int long rightNumber = 0;
 	int i = 0;
 	
-	std::vector<int>vectorCopy = this->_vector;
+	this->vectorCopy = this->_vector;
 	std::sort(vectorCopy.begin(), vectorCopy.end());
 	
+//	std::cout << "start " << this->vectorCopy.front() << std::endl;
+//	std::cout << "end: " << this->vectorCopy.back() << std::endl;
 	while(i < (vectorCopy.size() - 1) )
 	{
 		leftNumber = static_cast<long>(vectorCopy[i]);
@@ -75,30 +76,114 @@ long Span::shortestSpan(void)
 		i++;
 	}
 	return(shortestSpan);
-
 }
 
+long Span::longestSpan(void)
+{
+	if(_vector.size() <= 1)
+		throw(std::exception());
+	int i = 0;
+	int long min = INT_MAX;
+	int long max = INT_MIN;
+
+	std::vector<int>::iterator itBegin;
+	std::vector<int>::iterator itEnd;
+	
+	itBegin = _vector.begin();
+	itEnd = _vector.end();
+	while(itBegin != itEnd)
+	{
+		if(*itBegin < min)
+			min = *itBegin;
+		if(*itBegin > max)
+			max = *itBegin;
+		itBegin++;
+	}
+	return(max - min);
+
+//	this->vectorCopy = this->_vector;
+//	std::
+
+//	vectorMin = vectorCopy.front();
+//	vectorMin = vectorCopy.back();
+	
+//	return()
+//	vectorMax = static_cast<long>(vectorCopy.end());
+//	return(std::labs(vectorMin - vectorMax));
+}
+
+int Span::getVector(int vectorElement)
+{
+	return(this->vectorCopy[vectorElement]);
+}
+
+int Span::getVectorSize(void)
+{
+	return(_vector.size());
+}
+
+void addToSpan1(Span &span1)
+{
+	try
+	{
+		span1.addNumber(0);
+		span1.addNumber(100);
+		span1.addNumber(150);
+		span1.addNumber(180);
+		span1.addNumber(190);
+		span1.addNumber(195);
+	}
+	catch(std::exception &e)
+	{
+		std::cout << "Number out of bound " << e.what() << std::endl;
+	}
+}
+
+void printLongAndShortSpan(Span &span1)
+{
+	int i = 0;
+	unsigned int shortestSpan = 0;
+	unsigned int longestSpan = 0;
+	try
+	{
+		shortestSpan = span1.shortestSpan();
+		longestSpan = span1.longestSpan();
+		std::cout << "ShortestSpan is " << shortestSpan;
+		std::cout << " and LongestSpan is " << longestSpan;
+		std::cout << " from following numbers: " << std::endl;
+	}
+	catch(std::exception &e)
+	{
+		std::cout << "Numbers out of bound" << e.what() << std::endl;
+	}
+	while(i < span1.getVectorSize())
+	{
+		std::cout << span1.getVector(i) << std::endl;
+		i++;
+	}
+	std::cout << std::endl;
+}
+
+void addToSpan2(Span &span2)
+{
+	try
+	{
+		span2.addNumber(INT_MIN);
+		span2.addNumber(INT_MAX);
+	}
+	catch(std::exception &e)
+	{
+		std::cout << "Number out of bound " << e.what() << std::endl;
+	}
+}
 int main(void)
 {
-	Span span = Span(10);
+	int i = 0;
+	Span span1 = Span(8);
+	addToSpan1(span1);
+	printLongAndShortSpan(span1);
 	
-//	span.addNumber(0);
-//	span.addNumber(100);
-//	span.addNumber(150);
-//	span.addNumber(180);
-//	span.addNumber(190);
-//	span.addNumber(195);
-
-	int num1 = INT_MIN;	
-	int num2 = INT_MAX;
-	
-//	int num1 = - 10;
-//	int num2 = 10;
-
-//	std::cout << "num1: " << num1 << std::endl;
-	span.addNumber(num1);
-	span.addNumber(num2);
-	std::cout << span.shortestSpan() << std::endl;
-
-//	span.span();
+	Span span2 = Span(2);
+	addToSpan2(span2);
+	printLongAndShortSpan(span2);
 }

@@ -6,9 +6,12 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 14:13:39 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/23 17:06:47 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/23 20:39:19 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef SPAN_HPP
+# define SPAN_HPP
 
 #include <iostream>
 #include <vector>
@@ -22,12 +25,20 @@ class Span
 		Span &operator = (const Span &rhs); // assignment operator - Canonical
 		~Span(void); // Destructor - Canonical
 		Span(unsigned int vectorElements);
-		
+	
+		std::vector<int> vectorCopy;
 		void addNumber(int number);
 		long shortestSpan(void);
-		long longestSpan();
-//		Span(std::vector<int> vectorArray); // Not sure where this will be used yet
+		long longestSpan(void);
+		int getVector(int vectorElemenet);
+		int getVectorSize(void);
 	private:
 		unsigned int _vectorElements;
 		std::vector<int> _vector;
 };
+
+void addToSpan1(Span &span1);
+void addToSpan2(Span &span2);
+void printLongAndShortSpan(Span &span);
+
+#endif
