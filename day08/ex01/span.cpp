@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 14:24:16 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/23 20:39:13 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/23 21:17:42 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,7 @@ long Span::shortestSpan(void)
 	int i = 0;
 	
 	this->vectorCopy = this->_vector;
-	std::sort(vectorCopy.begin(), vectorCopy.end());
-	
-//	std::cout << "start " << this->vectorCopy.front() << std::endl;
-//	std::cout << "end: " << this->vectorCopy.back() << std::endl;
+	std::sort(vectorCopy.begin(), vectorCopy.end());	
 	while(i < (vectorCopy.size() - 1) )
 	{
 		leftNumber = static_cast<long>(vectorCopy[i]);
@@ -100,16 +97,6 @@ long Span::longestSpan(void)
 		itBegin++;
 	}
 	return(max - min);
-
-//	this->vectorCopy = this->_vector;
-//	std::
-
-//	vectorMin = vectorCopy.front();
-//	vectorMin = vectorCopy.back();
-	
-//	return()
-//	vectorMax = static_cast<long>(vectorCopy.end());
-//	return(std::labs(vectorMin - vectorMax));
 }
 
 int Span::getVector(int vectorElement)
@@ -120,6 +107,13 @@ int Span::getVector(int vectorElement)
 int Span::getVectorSize(void)
 {
 	return(_vector.size());
+}
+
+void Span::addNumberStack(std::vector<int> vectorTenK)
+{
+	if(_vector.size() == vectorTenK.size())
+		throw(std::exception());
+	_vector.insert(_vector.begin(), vectorTenK.begin(), vectorTenK.end());
 }
 
 void addToSpan1(Span &span1)
@@ -138,10 +132,36 @@ void addToSpan1(Span &span1)
 		std::cout << "Number out of bound " << e.what() << std::endl;
 	}
 }
+void addToSpan2(Span &span2)
+{
+	try
+	{
+		span2.addNumber(INT_MIN);
+		span2.addNumber(INT_MAX);
+	}
+	catch(std::exception &e)
+	{
+		std::cout << "Number out of bound " << e.what() << std::endl;
+	}
+}
+
+void addToSpanTenK(std::vector<int> vectorTenK, Span &span)
+{
+	int i = 0;
+	while(i <= 10000)
+		vectorTenK.push_back(i++);
+	try
+	{
+		span.addNumberStack(vectorTenK);
+	}
+	catch(std::exception &e)
+	{
+		std::cout << "Number out of bound " << e.what() << std::endl;
+	}
+}
 
 void printLongAndShortSpan(Span &span1)
 {
-	int i = 0;
 	unsigned int shortestSpan = 0;
 	unsigned int longestSpan = 0;
 	try
@@ -156,34 +176,56 @@ void printLongAndShortSpan(Span &span1)
 	{
 		std::cout << "Numbers out of bound" << e.what() << std::endl;
 	}
-	while(i < span1.getVectorSize())
+
+}
+
+void printLongAndShortSpan1000(Span &span1)
+{
+	unsigned int shortestSpan = 0;
+	unsigned int longestSpan = 0;
+	try
 	{
-		std::cout << span1.getVector(i) << std::endl;
+		shortestSpan = span1.shortestSpan();
+		longestSpan = span1.longestSpan();
+		std::cout << "ShortestSpan is " << shortestSpan;
+		std::cout << " and LongestSpan is " << longestSpan;
+		std::cout << " for numbers from 0 to 10000" << std::endl;
+	}
+	catch(std::exception &e)
+	{
+		std::cout << "Numbers out of bound" << e.what() << std::endl;
+	}
+
+}
+void printAllVectorElements(Span &span)
+{
+	int i = 0;
+
+	while(i < span.getVectorSize())
+	{
+		std::cout << span.getVector(i) << std::endl;
 		i++;
 	}
 	std::cout << std::endl;
 }
 
-void addToSpan2(Span &span2)
-{
-	try
-	{
-		span2.addNumber(INT_MIN);
-		span2.addNumber(INT_MAX);
-	}
-	catch(std::exception &e)
-	{
-		std::cout << "Number out of bound " << e.what() << std::endl;
-	}
-}
 int main(void)
 {
 	int i = 0;
 	Span span1 = Span(8);
 	addToSpan1(span1);
 	printLongAndShortSpan(span1);
+	printAllVectorElements(span1);
 	
 	Span span2 = Span(2);
 	addToSpan2(span2);
 	printLongAndShortSpan(span2);
+	printAllVectorElements(span2);
+	
+	std::vector<int> vectorTenK;
+	vectorTenK.reserve(10001);
+
+	Span span3 = Span(1);
+	addToSpanTenK(vectorTenK, span3);
+	printLongAndShortSpan1000(span3);
 }

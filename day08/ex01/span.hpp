@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 14:13:39 by mbutt             #+#    #+#             */
-/*   Updated: 2020/01/23 20:39:19 by mbutt            ###   ########.fr       */
+/*   Updated: 2020/01/23 21:17:46 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class Span
 	
 		std::vector<int> vectorCopy;
 		void addNumber(int number);
+		void addNumberStack(std::vector<int> numberArray);
 		long shortestSpan(void);
 		long longestSpan(void);
 		int getVector(int vectorElemenet);
@@ -39,6 +40,8 @@ class Span
 
 void addToSpan1(Span &span1);
 void addToSpan2(Span &span2);
+void addToSpanTenK(std::vector<int> vectorTenK, Span &span);
 void printLongAndShortSpan(Span &span);
+void printLongAndShortSpan1000(Span &span);
 
 #endif
